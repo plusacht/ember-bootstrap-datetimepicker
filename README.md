@@ -1,7 +1,8 @@
 # Ember-cli-bootstrap-datetimepicker [![Build Status](https://travis-ci.org/plusacht/ember-cli-bootstrap-datetimepicker.svg)](https://travis-ci.org/plusacht/ember-cli-bootstrap-datetimepicker)
 
-This component is an Ember CLI add-on and [ember-bootstrap](http://http://eonasdan.github.io/bootstrap-datetimepicker/ "Bootstrap datetimepicker")
-to create an extensible ember component out of it. This is still a work in progress. Pull requests are welcome.
+Datetimepicker ad-don for ember-cli
+
+
 
 ## Installation ##
 
@@ -52,6 +53,10 @@ All options supported offered by [ember-bootstrap](http://http://eonasdan.github
 Type: `String` or `Date`
 
 This variable will be changed when the user changes the date and on the other side it will update the datetime picker when "date" is updated
+
+## Credits ##
+
+This add-on is based on [bootstrap-datetimepicker](http://http://eonasdan.github.io/bootstrap-datetimepicker/ "Bootstrap datetimepicker")
 
 ## Legal ##
 
