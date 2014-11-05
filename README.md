@@ -32,7 +32,8 @@ var app = new EmberAddon({
 ```
 
 ## Building yourself ##
-Check out the demo on [github pages](http://plusacht.github.io/ember-bootstrap-datetimepicker/ "Bootstrap datetimepicker").
+                                     
+Check out the demo on [github pages](http://plusacht.github.io/ember-cli-bootstrap-datetimepicker "Bootstrap datetimepicker").
 Alternatively you can clone this repo and run the app
 
 ```bash
