@@ -32,7 +32,7 @@ var app = new EmberAddon({
 ```
 
 ## Building yourself ##
-Check out the demo on [github pages](http://gevious.github.io/ember-datepicker/ "Bootstrap datetimepicker").
+Check out the demo on [github pages](http://plusacht.github.io/ember-bootstrap-datetimepicker/ "Bootstrap datetimepicker").
 Alternatively you can clone this repo and run the app
 
 ```bash
@@ -45,7 +45,7 @@ ember serve
 * Visit your app at http://localhost:4200.
 
 ## General Options ##
-All options supported offered by [ember-bootstrap](http://http://eonasdan.github.io/bootstrap-datetimepicker/ "Bootstrap datetimepicker") are supported
+All options supported offered by [ember-bootstrap](http://eonasdan.github.io/bootstrap-datetimepicker/ "Bootstrap datetimepicker") are supported
 
 ## Bound Options ##
 
@@ -56,7 +56,7 @@ This variable will be changed when the user changes the date and on the other si
 
 ## Credits ##
 
-This add-on is based on [bootstrap-datetimepicker](http://http://eonasdan.github.io/bootstrap-datetimepicker/ "Bootstrap datetimepicker")
+This add-on is based on [bootstrap-datetimepicker](http://eonasdan.github.io/bootstrap-datetimepicker/ "Bootstrap datetimepicker")
 
 ## Legal ##
 
