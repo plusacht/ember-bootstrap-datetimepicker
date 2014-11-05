@@ -40,10 +40,10 @@ Alternatively you can clone this repo and run the app
 
 ```bash
 sudo npm install -g ember-cli
-git clone git@github.com:plus8/ember-cli-bootstrap-datetimepicker
+git clone https://github.com/plusacht/ember-bootstrap-datetimepicker.git
 cd ember-bootstrap-datetimepicker
 npm install; bower install
-ember server
+ember serve
 ```
 * Visit your app at http://localhost:4200.
 
