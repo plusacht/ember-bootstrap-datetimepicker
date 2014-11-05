@@ -1,9 +1,5 @@
-# Ember-cli-bootstrap-datetimepicker #
+# Ember-cli-bootstrap-datetimepicker [![Build Status](https://travis-ci.org/plusacht/ember-cli-bootstrap-datetimepicker.svg)](https://travis-ci.org/plusacht/ember-cli-bootstrap-datetimepicker)
 
-[![Build Status](https://travis-ci.org/plusacht/ember-bootstrap-datetimepicker.svg)](https://travis-ci.org/plusacht/ember-bootstrap-datetimepicker)
-
-
-## Description ##
 This component is an Ember CLI add-on and [ember-bootstrap](http://http://eonasdan.github.io/bootstrap-datetimepicker/ "Bootstrap datetimepicker")
 to create an extensible ember component out of it. This is still a work in progress. Pull requests are welcome.
 
