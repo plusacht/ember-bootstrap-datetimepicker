@@ -1,6 +1,6 @@
 # Ember-cli-bootstrap-datetimepicker #
 
-[![Build Status](https://travis-ci.org/plus8/ember-cli-bootstrap-datetimepicker.svg)](https://travis-ci.org/plus8/ember-datepicker)
+[![Build Status](https://travis-ci.org/plusacht/ember-bootstrap-datetimepicker.svg)](https://travis-ci.org/plusacht/ember-bootstrap-datetimepicker)
 
 
 ## Description ##
