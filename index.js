@@ -3,21 +3,21 @@
 var path = require('path');
 
 module.exports = {
-  name: 'ember-bootstrap-datetimepicker',
+  name: 'ember-cli-bootstrap-datetimepicker',
 
   included: function(app) {
     this._super.included(app);
 
 		var bootstrapPath   = path.join(app.bowerDirectory,'/bootstrap/dist/');
-    var options         = app.options['ember-bootstrap-datetimepicker'] || {};	
+    var options         = app.options['ember-cli-bootstrap-datetimepicker'] || {};
 
-		
+
 		// Import css theme from bootstrap
     if (options.importBootstrapTheme) {
       app.import(path.join(bootstrapPath, 'css/bootstrap-theme.css'));
     }
 
-    
+
     // Import css and glyphicons from bootstrap
     if (options.importBootstrapCSS) {
       app.import(path.join(bootstrapPath, 'css/bootstrap.css'));
@@ -34,7 +34,7 @@ module.exports = {
 		//Import css from bootstrap-datetimepicker
 		app.import(path.join(app.bowerDirectory, '/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css'));
 
-    
+
     //Import js from moment
     app.import(path.join(app.bowerDirectory, '/moment/moment.js'));
 
@@ -43,8 +43,8 @@ module.exports = {
         moment: ['default']
       }
     });
-    
-    
+
+
     //Import css from bootstrap
     if (options.importBootstrapJS) {
       app.import(path.join(bootstrapPath, 'js/bootstrap.js'));

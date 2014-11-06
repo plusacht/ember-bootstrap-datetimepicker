@@ -16,7 +16,7 @@ var bsDateTimePickerComponent = Ember.Component.extend({
 
   layoutName: "components/bs-datetimepicker",
 
-  //ember-bootstrap-datetimepicker computed options
+  //computed options
   minDate: datetimepickerDefaultConfig["minDate"],
   maxDate: datetimepickerDefaultConfig["maxDate"],
   disabledDates:[],
@@ -24,8 +24,8 @@ var bsDateTimePickerComponent = Ember.Component.extend({
 
   disabled:false,
   open: false,
-  
-  
+
+
   _initDatepicker: function() {
 
     var self = this;
@@ -40,7 +40,7 @@ var bsDateTimePickerComponent = Ember.Component.extend({
     });
 
     this._disabledObserver();
-    
+
     if(self.get("open")) {
       self.get("bsDateTimePicker").show();
     }

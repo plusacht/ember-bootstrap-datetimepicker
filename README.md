@@ -23,7 +23,7 @@ The twitter bootstrap resources will not be imported to your resources by defaul
 
 ```javascript
 var app = new EmberAddon({
-  'ember-bootstrap-datetimepicker': {
+  'ember-cli-bootstrap-datetimepicker': {
     "importBootstrapCSS": true,
     "importBootstrapJS": true,
     "importBootstrapTheme": true
