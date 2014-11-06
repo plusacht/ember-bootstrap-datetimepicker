@@ -1,6 +1,6 @@
 # Ember-cli-bootstrap-datetimepicker [![Build Status](https://travis-ci.org/plusacht/ember-cli-bootstrap-datetimepicker.svg)](https://travis-ci.org/plusacht/ember-cli-bootstrap-datetimepicker)
 
-Datetimepicker ad-don for ember-cli
+Datetimepicker add-on for ember-cli
 
 
 
@@ -19,7 +19,7 @@ ember g ember-cli-bootstrap-datetimepicker
 ```
 
 ### Brocfile.js ###
-The twitter bootstrap resources will not be imported to your resources by default. If you want the addon to add it you have to specify it in the `Brocfile.js`
+The twitter bootstrap resources will not be imported to your resources by default. If you want the add-on to add it you have to specify it in the `Brocfile.js`
 
 ```javascript
 var app = new EmberAddon({
@@ -51,9 +51,27 @@ All options supported offered by [ember-bootstrap](http://eonasdan.github.io/boo
 ## Bound Options ##
 
 ### date ###
-Type: `String` or `Date`
+Type: `Date`
 
 This variable will be changed when the user changes the date and on the other side it will update the datetime picker when "date" is updated
+
+### minDate ###
+Type: `Date`
+
+### maxDate ###
+Type: `Date`
+
+### disabledDates ###
+Type: `Date`
+
+### enabledDates ###
+Type: `Array Date`
+
+### enabledDates ###
+Type: `Array Date`
+
+### open ###
+Type: `boolean`
 
 ## Credits ##
 
