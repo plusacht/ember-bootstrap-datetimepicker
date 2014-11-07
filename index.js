@@ -3,13 +3,13 @@
 var path = require('path');
 
 module.exports = {
-  name: 'ember-cli-bootstrap-datetimepicker',
+  name: 'ember-bootstrap-datetimepicker',
 
   included: function(app) {
     this._super.included(app);
 
 		var bootstrapPath   = path.join(app.bowerDirectory,'/bootstrap/dist/');
-    var options         = app.options['ember-cli-bootstrap-datetimepicker'] || {};
+    var options         = app.options['ember-bootstrap-datetimepicker'] || {};
 
 
 		// Import css theme from bootstrap

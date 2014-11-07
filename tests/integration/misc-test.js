@@ -5,7 +5,7 @@ import { test, moduleForComponent } from 'ember-qunit';
 
 var App, component;
 
-moduleForComponent('bs-datetimepicker', 'ember-cli-bootstrap-datetimepicker integration', {
+moduleForComponent('bs-datetimepicker', 'ember-bootstrap-datetimepicker integration', {
   setup: function() {
     App = startApp();
   },

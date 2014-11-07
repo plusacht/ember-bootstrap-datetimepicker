@@ -1,4 +1,4 @@
-# Ember-cli-bootstrap-datetimepicker [![Build Status](https://travis-ci.org/plusacht/ember-cli-bootstrap-datetimepicker.svg)](https://travis-ci.org/plusacht/ember-cli-bootstrap-datetimepicker)
+# Ember-bootstrap-datetimepicker [![Build Status](https://travis-ci.org/plusacht/ember-bootstrap-datetimepicker.svg)](https://travis-ci.org/plusacht/ember-bootstrap-datetimepicker)
 
 Datetimepicker add-on for ember-cli
 
@@ -7,8 +7,8 @@ Datetimepicker add-on for ember-cli
 ## Installation ##
 
 ```bash
-npm install ember-cli-bootstrap-datetimepicker --save-dev
-ember g ember-cli-bootstrap-datetimepicker
+npm install ember-bootstrap-datetimepicker --save-dev
+ember g ember-bootstrap-datetimepicker
 ```
 
 ## Basic Usage
@@ -23,7 +23,7 @@ The twitter bootstrap resources will not be imported to your resources by defaul
 
 ```javascript
 var app = new EmberAddon({
-  'ember-cli-bootstrap-datetimepicker': {
+  'ember-bootstrap-datetimepicker': {
     "importBootstrapCSS": true,
     "importBootstrapJS": true,
     "importBootstrapTheme": true
@@ -33,7 +33,7 @@ var app = new EmberAddon({
 
 ## Building yourself ##
                                      
-Check out the demo on [github pages](http://plusacht.github.io/ember-cli-bootstrap-datetimepicker "Bootstrap datetimepicker").
+Check out the demo on [github pages](http://plusacht.github.io/ember-bootstrap-datetimepicker "Bootstrap datetimepicker").
 Alternatively you can clone this repo and run the app
 
 ```bash
