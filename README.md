@@ -74,6 +74,32 @@ Type: `Array Date`
 
 When you change this variable the component trigger an update to the enabledDates on the jQuery plugin.
 
+## Usage ##
+
+### Min / Maxdate example ###
+Define your model
+
+```javascript
+var App.DateExample = Ember.Object.create({
+  date1: moment(),
+  mindate: moment("2014-11-01"),
+  maxdate: moment("2015-12-01"),
+  disabled:true});
+}
+```
+
+Add the component to your template and bind the model.mindate with the component's minDate.
+
+```handlebars
+{{bs-datetimepicker date=date1 minDate=mindate maxDate=maxdate}}
+```
+
+Change minDate so the jquery plugin will be updated with the minDate value
+
+```javascript
+App.DateExample.set('maxdate', moment("2015-03-01"));
+```
+
 ## Credits ##
 
 This add-on is based on [bootstrap-datetimepicker](http://eonasdan.github.io/bootstrap-datetimepicker/ "Bootstrap datetimepicker")
