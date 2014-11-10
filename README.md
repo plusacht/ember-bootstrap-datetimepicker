@@ -3,7 +3,6 @@
 Datetimepicker add-on for ember-cli
 
 
-
 ## Installation ##
 
 ```bash
@@ -58,20 +57,22 @@ This variable will be changed when the user changes the date and on the other si
 ### minDate ###
 Type: `Date`
 
+When you change this variable the component trigger an update to the minDate on the jQuery plugin.
+
 ### maxDate ###
 Type: `Date`
+
+When you change this variable the component trigger an update to the maxDate on the jQuery plugin.
 
 ### disabledDates ###
 Type: `Date`
 
-### enabledDates ###
-Type: `Array Date`
+When you change this variable the component trigger an update to the disabledDates on the jQuery plugin.
 
 ### enabledDates ###
 Type: `Array Date`
 
-### open ###
-Type: `boolean`
+When you change this variable the component trigger an update to the enabledDates on the jQuery plugin.
 
 ## Credits ##
 
