@@ -45,7 +45,7 @@ ember serve
 * Visit your app at http://localhost:4200.
 
 ## General Options ##
-All options supported offered by [ember-bootstrap](http://eonasdan.github.io/bootstrap-datetimepicker/ "Bootstrap datetimepicker") are supported
+All options supported offered by [bootstrap-datetimepicker](http://eonasdan.github.io/bootstrap-datetimepicker/ "eonasdan's Bootstrap datetimepicker") are supported
 
 ## Bound Options ##
 
