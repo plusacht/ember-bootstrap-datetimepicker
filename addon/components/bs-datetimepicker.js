@@ -7,14 +7,11 @@ var isDatetimepickerConfigKeys = Ember.keys(datetimepickerDefaultConfig);
 
 
 var bsDateTimePickerComponent = Ember.Component.extend({
-  className: ["form-control"],
+  classNames: ["bs-datetimepicker-component"],
   textFieldClass: Ember.TextField,
-  textFieldClassNames:["form-control"],
   textFieldName: computed.alias("elementId"),
   date: null,
   bsDateTimePicker: null,
-
-  layoutName: "components/bs-datetimepicker",
 
   //computed options
   minDate: datetimepickerDefaultConfig["minDate"],
