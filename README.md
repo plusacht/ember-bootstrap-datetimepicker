@@ -102,7 +102,7 @@ App.DateExample.set('maxdate', moment("2015-03-01"));
 
 ## Credits ##
 
-This add-on is based on [bootstrap-datetimepicker](http://eonasdan.github.io/bootstrap-datetimepicker/ "Bootstrap datetimepicker")
+This add-on is based on [bootstrap-datetimepicker](http://eonasdan.github.io/bootstrap-datetimepicker/ "eonasdan's Bootstrap datetimepicker")
 
 ## Legal ##
 
