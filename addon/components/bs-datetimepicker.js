@@ -21,6 +21,7 @@ var bsDateTimePickerComponent = Ember.Component.extend({
 
   disabled:false,
   open: false,
+  forceDateOutput: false,
 
 
   _initDatepicker: function() {
@@ -33,7 +34,15 @@ var bsDateTimePickerComponent = Ember.Component.extend({
     bsDateTimePickerFn.setDate(self.get("date"));
 
     bsDateTimePicker.on("dp.change", function(ev) {
-      self.set("date", ev.date);
+      if(Ember.isNone(ev.date)) {
+        self.set("date", undefined);
+      } else {
+        if(self.forceDateOutput) {
+          self.set("date", ev.date.toDate());
+        } else {
+          self.set("date", ev.date);
+        }
+      }
     });
 
     this._disabledObserver();
