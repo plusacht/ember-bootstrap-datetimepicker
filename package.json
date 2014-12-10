@@ -1,6 +1,6 @@
 {
   "name": "ember-bootstrap-datetimepicker",
-  "version": "0.2.6",
+  "version": "0.2.7",
   "directories": {
     "doc": "doc",
     "test": "tests"
