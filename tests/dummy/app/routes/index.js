@@ -10,12 +10,5 @@ export default Ember.Route.extend({
 			mindate: moment("2014-11-01"),
 			maxdate: moment("2015-12-01"),
 			disabled:true});
-	},
-
-  actions : {
-    reset : function() {
-      debugger;
-       this.set('controller.model', Ember.Object.create({}));
-   }
-}
+	}
 });
