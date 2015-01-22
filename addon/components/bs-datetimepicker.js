@@ -31,7 +31,7 @@ var bsDateTimePickerComponent = Ember.Component.extend({
     var bsDateTimePickerFn = bsDateTimePicker.data("DateTimePicker");
 
     this.set('bsDateTimePicker', bsDateTimePickerFn);
-    bsDateTimePickerFn.setDate(self.get("date"));
+    bsDateTimePickerFn.date(self.get("date"));
 
     bsDateTimePicker.on("dp.change", function(ev) {
       if(Ember.isNone(ev.date)) {
@@ -87,7 +87,7 @@ var bsDateTimePickerComponent = Ember.Component.extend({
   }.observes("enabledDates"),
 
   _dateObserver: function() {
-    this.get("bsDateTimePicker").setDate(this.get('date'));
+    this.get("bsDateTimePicker").date(this.get('date'));
   }.observes("date"),
 
   _destroyDatepicker: function() {
@@ -116,4 +116,3 @@ bsDateTimePickerComponent.reopen(newClassConfig);
 
 
 export default bsDateTimePickerComponent;
-
