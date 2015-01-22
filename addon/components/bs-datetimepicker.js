@@ -92,11 +92,11 @@ var bsDateTimePickerComponent = Ember.Component.extend({
   }.observes("maxDate"),
 
   _disabledDatesObserver: function() {
-    this.get("bsDateTimePicker").setDisabledDates(this.get('disabledDates'));
+    this.get("bsDateTimePicker").disabledDates(this.get('disabledDates'));
   }.observes("disabledDates"),
 
   _enabledDatesObserver: function() {
-    this.get("bsDateTimePicker").setEnabledDates(this.get('enabledDates'));
+    this.get("bsDateTimePicker").enabledDates(this.get('enabledDates'));
   }.observes("enabledDates"),
 
   _dateObserver: function() {
