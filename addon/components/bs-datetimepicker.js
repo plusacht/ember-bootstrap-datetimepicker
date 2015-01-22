@@ -31,7 +31,12 @@ var bsDateTimePickerComponent = Ember.Component.extend({
     var bsDateTimePickerFn = bsDateTimePicker.data("DateTimePicker");
 
     this.set('bsDateTimePicker', bsDateTimePickerFn);
-    bsDateTimePickerFn.setDate(self.get("date"));
+    if(self.get("date") === undefined) {
+      bsDateTimePickerFn.date(null);
+    } else {
+      bsDateTimePickerFn.date(self.get("date"));
+    }
+
 
     bsDateTimePicker.on("dp.change", function(ev) {
       if(Ember.isNone(ev.date)) {
@@ -71,11 +76,19 @@ var bsDateTimePickerComponent = Ember.Component.extend({
   }.observes("open"),
 
   _minDateObserver: function() {
-    this.get("bsDateTimePicker").setMinDate(this.get('minDate'));
+    if(Ember.isNone(this.get('minDate'))) {
+      this.get("bsDateTimePicker").minDate(false);
+    } else {
+      this.get("bsDateTimePicker").minDate(this.get('minDate'));
+    }
   }.observes("minDate"),
 
   _maxDateObserver: function() {
-    this.get("bsDateTimePicker").setMaxDate(this.get('maxDate'));
+    if(Ember.isNone(this.get('maxDate'))) {
+      this.get("bsDateTimePicker").maxDate(false);
+    } else {
+      this.get("bsDateTimePicker").maxDate(this.get('maxDate'));
+    }
   }.observes("maxDate"),
 
   _disabledDatesObserver: function() {
@@ -87,7 +100,14 @@ var bsDateTimePickerComponent = Ember.Component.extend({
   }.observes("enabledDates"),
 
   _dateObserver: function() {
-    this.get("bsDateTimePicker").setDate(this.get('date'));
+    var bsDateTimePickerFn = this.get("bsDateTimePicker");
+
+    if(this.get("date") === undefined) {
+      bsDateTimePickerFn.date(null);
+    } else {
+      bsDateTimePickerFn.date(this.get("date"));
+    }
+
   }.observes("date"),
 
   _destroyDatepicker: function() {
@@ -116,4 +136,3 @@ bsDateTimePickerComponent.reopen(newClassConfig);
 
 
 export default bsDateTimePickerComponent;
-

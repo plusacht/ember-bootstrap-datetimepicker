@@ -17,9 +17,8 @@
     "moment": ">=2.8.3"
   },
   "devDependencies": {
-    "eonasdan-bootstrap-datetimepicker":"claudiocro/bootstrap-datetimepicker#master"
+    "eonasdan-bootstrap-datetimepicker": "~4.0.0"
   },
-
   "ignore": [
     "**/.*",
     "node_modules",
