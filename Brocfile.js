@@ -1,8 +1,8 @@
 /* global require, module */
 
-var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
+var EmberApp = require('ember-cli/lib/broccoli/ember-addon');
 
-var app = new EmberAddon({
+var app = new EmberApp({
   'ember-bootstrap-datetimepicker': {
   	'importBootstrapCSS': true,
     'importBootstrapJS': true
