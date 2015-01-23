@@ -6,3 +6,7 @@
 ## 0.2.7
 
 * Introduced new `forceDateOutput` option
+
+## 0.2.8
+
+* update to eonasdan-bootstrap-datetimepicker v4.0.0
