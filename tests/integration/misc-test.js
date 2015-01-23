@@ -26,14 +26,18 @@ test("it shows the picker on input focus, then hides it after click outside", fu
   // initial render
   this.$();
 
-  equal($(".bootstrap-datetimepicker-widget").css("display"), "none", "date picker is initially hidden");
+  andThen(function() {
+    equal($(".bootstrap-datetimepicker-widget").css("display"), undefined, "date picker is initially a hidden");
+    click($(".input-group-addon"));
+  });
 
-  click($(".input-group-addon"));
+
+
   andThen(function() {
     equal($(".bootstrap-datetimepicker-widget").css("display"), "block", "date picker is visible");
-    click(document.body);
+    click($(".input-group-addon"));
   });
   andThen(function() {
-    equal($(".bootstrap-datetimepicker-widget").css("display"), "none", "date picker is hidden again");
+    equal($(".bootstrap-datetimepicker-widget").css("display"), undefined, "date picker is hidden again");
   });
 });
