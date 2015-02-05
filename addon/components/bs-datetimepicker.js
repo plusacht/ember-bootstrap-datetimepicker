@@ -18,6 +18,7 @@ var bsDateTimePickerComponent = Ember.Component.extend({
   maxDate: datetimepickerDefaultConfig["maxDate"],
   disabledDates:[],
   enabledDates:[],
+  dateIcon: "glyphicon glyphicon-calendar",
 
   disabled:false,
   open: false,
@@ -124,7 +125,7 @@ var bsDateTimePickerComponent = Ember.Component.extend({
 });
 
 
-var computedProps = ["minDate","maxDate","disabledDates","enabledDates"];
+var computedProps = ["minDate","maxDate","disabledDates","enabledDates","dateIcon"];
 var newClassConfig = {};
 for(var i=0; i<isDatetimepickerConfigKeys.length; i++) {
   if(!computedProps.contains(isDatetimepickerConfigKeys[i])) {
