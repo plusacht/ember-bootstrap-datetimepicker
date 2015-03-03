@@ -1,15 +1,18 @@
 
 import Ember from 'ember';
+import DateTimePickerTextFieldMixin from 'ember-bootstrap-datetimepicker/mixins/datetimepicker_textfield';
 
 var computed = Ember.computed;
 var datetimepickerDefaultConfig = Ember.$.fn.datetimepicker.defaults;
 var isDatetimepickerConfigKeys = Ember.keys(datetimepickerDefaultConfig);
 
-
 var bsDateTimePickerComponent = Ember.Component.extend({
+  concatenatedProperties: ["textFieldClassNames"],
   classNames: ["bs-datetimepicker-component"],
-  textFieldClass: Ember.TextField,
+  textFieldClass: Ember.TextField.extend(DateTimePickerTextFieldMixin),
+  textFieldClassNames: ["form-control"],
   textFieldName: computed.alias("elementId"),
+  textFieldOptions:null,
   date: null,
   bsDateTimePicker: null,
 
@@ -26,7 +29,6 @@ var bsDateTimePickerComponent = Ember.Component.extend({
 
 
   _initDatepicker: function() {
-
     var self = this;
     var bsDateTimePicker = this.$(".datetimepicker").datetimepicker(this._buildConfig());
     var bsDateTimePickerFn = bsDateTimePicker.data("DateTimePicker");
@@ -121,6 +123,20 @@ var bsDateTimePickerComponent = Ember.Component.extend({
       config[isDatetimepickerConfigKeys[i]] = this.get(isDatetimepickerConfigKeys[i]);
     }
     return config;
+  },
+
+  setUnknownProperty: function(key, value){
+    var prop;
+    if(key.indexOf("textField") === 0) {
+
+      if(Ember.isNone(this.get('textFieldOptions'))) {
+        this.set('textFieldOptions',{});
+      }
+
+      prop = key.substring(9,key.length);
+      prop = prop.charAt(0).toLowerCase() + prop.substr(1);
+      this.set('textFieldOptions.'+prop,value);
+    }
   }
 });
 
