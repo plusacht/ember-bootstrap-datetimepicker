@@ -17,3 +17,8 @@
 * Update to ember-cli v0.1.7
 * Prevent update of date if it didn't changed
 * Add the ability to override the form-group-addon's child span class
+
+## 0.3.1
+
+* Possibility to overwrite TextField with a template block
+* Exposing textField properties
