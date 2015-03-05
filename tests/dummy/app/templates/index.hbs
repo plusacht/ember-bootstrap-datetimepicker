@@ -7,6 +7,7 @@
           <li><a href="#example3">Min/Max date</a></li>
           <!-- li><a href="#example4">En/Disabled Dates</a></li -->
           <li><a href="#example5">Font-Awesome Icons</a></li>
+          <li><a href="#example6">Template Block</a></li>
       </ul>
     </div>
   </div>
@@ -37,12 +38,12 @@
       <h3>Minimum Setup (forceDateOutput)</h3>
       <div>
         <p>
-          {{bs-datetimepicker date=date2 forceDateOutput=true textFieldPlaceholder="Date"}}
+          {{bs-datetimepicker date=date2 forceDateOutput=true}}
         </p>
         <h5>Code</h5>
         <p>
           <pre>&lt;p&gt;
-  \{{bs-datetimepicker date=date2 forceDateOutput=true textFieldPlaceholder="Date"}}
+  \{{bs-datetimepicker date=date2 forceDateOutput=true}}
 &lt;/p&gt;
         </pre>
         </p>
@@ -133,6 +134,33 @@
           <div class="form-group">
             <label>Font-Awesome</label>
             {{bs-datetimepicker date=date2 dateIcon="fa fa-calendar" icons=faicons}}
+          </div>
+        </form>
+        <h5>Code</h5>
+        <p>
+          <pre>&lt;form class=&quot;form&quot; role=&quot;form&quot;&gt;
+&lt;div class=&quot;form-group&quot;&gt;
+  &lt;label&gt;Font-Awesome&lt;/label&gt;
+  \{{bs-datetimepicker date=date2 dateIcon="fa fa-calendar" icons=faicons}}
+&lt;/div&gt;
+          </pre>
+        </p>
+      </div>
+    </div>
+
+
+       <div id="example5">
+      <a name="example5"></a>
+      <h3>Template block</h3>
+
+      <div>
+        <form class="form" role="form">
+          <div class="form-group">
+            <label>With template</label>
+            {{#bs-datetimepicker date=date2}}
+              {{view Ember.TextField disabled=disabled class="form-control" name="Date" placeholder="Date"}}
+            {{/bs-datetimepicker}}
+            {{bs-datetimepicker date=date2 textFieldPlaceholder="Enter a date"}}
           </div>
         </form>
         <h5>Code</h5>

@@ -127,15 +127,29 @@ var bsDateTimePickerComponent = Ember.Component.extend({
 
   setUnknownProperty: function(key, value){
     var prop;
+    var ckey;
     if(key.indexOf("textField") === 0) {
 
       if(Ember.isNone(this.get('textFieldOptions'))) {
         this.set('textFieldOptions',{});
       }
 
-      prop = key.substring(9,key.length);
-      prop = prop.charAt(0).toLowerCase() + prop.substr(1);
-      this.set('textFieldOptions.'+prop,value);
+      if(Ember.IS_BINDING.test(key)) {
+        prop = key.substring(0,key.length-7);
+      }
+      else {
+       prop = key.substring(0,key.length);
+      }
+
+      ckey = prop.substring(9);
+      ckey = ckey.charAt(0).toLowerCase() + ckey.substr(1);
+
+      if(Ember.isNone(this.get('textFieldOptions.'+prop))) {
+
+        this.set('textFieldOptions.'+prop,ckey);
+
+        Ember.defineProperty(this, prop, null, value);
+      }
     }
   }
 });

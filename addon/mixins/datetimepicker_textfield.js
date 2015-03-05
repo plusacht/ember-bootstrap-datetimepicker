@@ -7,7 +7,9 @@ export default Ember.Mixin.create({
     this.set('classNames', this.get("parentView.textFieldClassNames"));
     if(!Ember.isEmpty(options)) {
       Ember.keys(options).forEach(function(key) {
-        self.set(key, options[key]);
+        Ember.defineProperty(self, options[key], Ember.computed("parentView."+key, function(){
+          return self.get("parentView."+key).toString();
+        }));
       });
     }
   }.on("init")

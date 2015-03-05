@@ -1,5 +1,10 @@
 <div class="datetimepicker input-group date">
-  {{view textFieldClass disabled=disabled name=textFieldName}}
+
+  {{#if template}}
+    {{yield}}
+  {{else}}
+    {{view textFieldClass disabled=disabled name=textFieldName}}
+  {{/if}}
   <span class="input-group-addon">
     <span {{bind-attr class="dateIcon"}}></span>
   </span>
