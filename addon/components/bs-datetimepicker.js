@@ -21,7 +21,15 @@ var bsDateTimePickerComponent = Ember.Component.extend({
   maxDate: datetimepickerDefaultConfig["maxDate"],
   disabledDates:[],
   enabledDates:[],
-  dateIcon: "glyphicon glyphicon-calendar",
+
+  //Icon displayed in input addon
+  addonIcon: function() {
+    if (!this.get('format') || /(M|D|d|W|w|G|g|Y|E|e)/.test(this.get('format'))) {
+      return this.get('icons.date');
+    } else {
+      return this.get('icons.time');
+    }
+  }.property('format'),
 
   disabled:false,
   open: false,
@@ -166,7 +174,7 @@ var bsDateTimePickerComponent = Ember.Component.extend({
 });
 
 
-var computedProps = ["minDate","maxDate","disabledDates","enabledDates","dateIcon"];
+var computedProps = ["minDate","maxDate","disabledDates","enabledDates"];
 var newClassConfig = {};
 for(var i=0; i<isDatetimepickerConfigKeys.length; i++) {
   if(!computedProps.contains(isDatetimepickerConfigKeys[i])) {
