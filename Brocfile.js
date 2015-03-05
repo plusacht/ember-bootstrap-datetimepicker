@@ -5,7 +5,8 @@ var EmberApp = require('ember-cli/lib/broccoli/ember-addon');
 var app = new EmberApp({
   'ember-bootstrap-datetimepicker': {
   	'importBootstrapCSS': true,
-    'importBootstrapJS': true
+    'importBootstrapJS': true,
+    'importFontAwesome': true
   }
 });
 

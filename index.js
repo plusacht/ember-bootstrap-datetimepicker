@@ -36,6 +36,16 @@ module.exports = {
 		app.import(path.join(app.bowerDirectory, '/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css'));
 
 
+  if(options.importFontAwesome) {
+    app.import(app.bowerDirectory + '/font-awesome/css/font-awesome.min.css', { destDir: '/fonts'});
+    app.import(app.bowerDirectory + '/font-awesome/fonts/fontawesome-webfont.woff', { destDir: '/fonts'});
+    app.import(app.bowerDirectory + '/font-awesome/fonts/fontawesome-webfont.woff2', { destDir: '/fonts'});
+    app.import(app.bowerDirectory + '/font-awesome/fonts/fontawesome-webfont.eot', { destDir: '/fonts'});
+    app.import(app.bowerDirectory + '/font-awesome/fonts/fontawesome-webfont.svg', { destDir: '/fonts'});
+    app.import(app.bowerDirectory + '/font-awesome/fonts/fontawesome-webfont.ttf', { destDir: '/fonts'});
+  }
+
+
     //Import js from moment
     app.import(path.join(app.bowerDirectory, '/moment/moment.js'));
 

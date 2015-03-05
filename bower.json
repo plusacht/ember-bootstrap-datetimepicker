@@ -18,7 +18,8 @@
     "bootstrap": "~3.3.2"
   },
   "devDependencies": {
-    "eonasdan-bootstrap-datetimepicker": "~4.0.0"
+    "eonasdan-bootstrap-datetimepicker": "~4.0.0",
+    "font-awesome": "~4.3.0"
   },
   "ignore": [
     "**/.*",
