@@ -125,6 +125,17 @@ var bsDateTimePickerComponent = Ember.Component.extend({
     return config;
   },
 
+  /**
+
+    Exposing the textField properties.
+    Every property beginning with "textField" will be exposed to the TextField view.
+
+    ```handlebars
+    {{bs-datetimepicker textFieldPlaceholder="Date"}}
+    ```
+    "textFieldPlaceholder" will be exposed to the TextField as "placeholder" property.
+
+  */
   setUnknownProperty: function(key, value){
     var prop;
     var ckey;
