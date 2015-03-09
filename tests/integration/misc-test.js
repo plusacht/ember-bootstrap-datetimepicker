@@ -19,25 +19,25 @@ moduleForComponent('bs-datetimepicker', 'ember-bootstrap-datetimepicker integrat
   }
 });
 
-test("it shows the picker on input focus, then hides it after click outside", function() {
-  expect(3);
+test("it shows the picker on input focus, then hides it after click outside", function(assert) {
+  assert.expect(3);
   component = this.subject();
 
   // initial render
   this.$();
 
   andThen(function() {
-    equal($(".bootstrap-datetimepicker-widget").css("display"), undefined, "date picker is initially a hidden");
+    assert.equal($(".bootstrap-datetimepicker-widget").css("display"), undefined, "date picker is initially a hidden");
     click($(".input-group-addon"));
   });
 
 
 
   andThen(function() {
-    equal($(".bootstrap-datetimepicker-widget").css("display"), "block", "date picker is visible");
+    assert.equal($(".bootstrap-datetimepicker-widget").css("display"), "block", "date picker is visible");
     click($(".input-group-addon"));
   });
   andThen(function() {
-    equal($(".bootstrap-datetimepicker-widget").css("display"), undefined, "date picker is hidden again");
+    assert.equal($(".bootstrap-datetimepicker-widget").css("display"), undefined, "date picker is hidden again");
   });
 });
