@@ -161,6 +161,14 @@ var bsDateTimePickerComponent = Ember.Component.extend({
 
         Ember.defineProperty(this, prop, null, value);
       }
+      else {
+        if(Ember.platform.hasPropertyAccessors) {
+          Ember.defineProperty(this, key, null, value);
+        }
+        else {
+          this[key] = value;
+        }
+      }
     }
   }
 });
