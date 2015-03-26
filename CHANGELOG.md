@@ -26,3 +26,7 @@
 ## 0.3.2
 
 * Upgrade to ember-cli 0.2.0
+
+## 0.3.3
+
+* Upgrade to ember-cli 0.2.1
