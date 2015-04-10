@@ -27,7 +27,7 @@ var bsDateTimePickerComponent = Ember.Component.extend({
   open: false,
   forceDateOutput: false,
 
-  _insertDatepicker: Ember.on('didInsertElement', function() {
+  _initDatepicker: Ember.on('didInsertElement', function() {
     var target;
     var self = this;
     if (this.get('noIcon')) {
