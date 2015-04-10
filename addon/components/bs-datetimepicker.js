@@ -8,7 +8,7 @@ var isDatetimepickerConfigKeys = Ember.keys(datetimepickerDefaultConfig);
 
 var bsDateTimePickerComponent = Ember.Component.extend({
   concatenatedProperties: ["textFieldClassNames"],
-  classNames: ["datetimepicker", "input-group", "date"],
+  classNames: ["input-group", "date"],
   textFieldClass: Ember.TextField.extend(DateTimePickerTextFieldMixin),
   textFieldClassNames: ["form-control"],
   textFieldName: computed.alias("elementId"),
