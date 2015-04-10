@@ -17,7 +17,7 @@
     "ember-cli-moment-shim": "~0.0.3"
   },
   "devDependencies": {
-    "eonasdan-bootstrap-datetimepicker": "~4.0.0",
+    "eonasdan-bootstrap-datetimepicker": "~4.7.14",
     "font-awesome": "~4.3.0"
   },
   "ignore": [

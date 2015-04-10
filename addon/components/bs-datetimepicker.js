@@ -1,4 +1,4 @@
-
+  
 import Ember from 'ember';
 import DateTimePickerTextFieldMixin from 'ember-bootstrap-datetimepicker/mixins/datetimepicker_textfield';
 
@@ -28,7 +28,7 @@ var bsDateTimePickerComponent = Ember.Component.extend({
   forceDateOutput: false,
 
 
-  _initDatepicker: function() {
+  _initDatepicker: Ember.on('didInsertElement', function() {
     var self = this;
     var bsDateTimePicker = this.$(".datetimepicker").datetimepicker(this._buildConfig());
     var bsDateTimePickerFn = bsDateTimePicker.data("DateTimePicker");
@@ -58,51 +58,51 @@ var bsDateTimePickerComponent = Ember.Component.extend({
     if(self.get("open")) {
       self.get("bsDateTimePicker").show();
     }
-  }.on("didInsertElement"),
+  }),
 
 
 
-  _disabledObserver: function() {
+  _disabledObserver: Ember.observer('disabled', function() {
     if(this.get("disabled")) {
       this.get("bsDateTimePicker").disable();
     } else {
       this.get("bsDateTimePicker").enable();
     }
-  }.observes("disabled"),
+  }),
 
-  _openObserver: function() {
+  _openObserver: Ember.observer('open', function() {
     if(this.get("open")) {
       this.get("bsDateTimePicker").show();
     } else {
       this.get("bsDateTimePicker").hide();
     }
-  }.observes("open"),
+  }),
 
-  _minDateObserver: function() {
+  _minDateObserver: Ember.observer('minDate', function() {
     if(Ember.isNone(this.get('minDate'))) {
       this.get("bsDateTimePicker").minDate(false);
     } else {
       this.get("bsDateTimePicker").minDate(this.get('minDate'));
     }
-  }.observes("minDate"),
+  }),
 
-  _maxDateObserver: function() {
+  _maxDateObserver: Ember.observer('maxDate', function() {
     if(Ember.isNone(this.get('maxDate'))) {
       this.get("bsDateTimePicker").maxDate(false);
     } else {
       this.get("bsDateTimePicker").maxDate(this.get('maxDate'));
     }
-  }.observes("maxDate"),
+  }),
 
-  _disabledDatesObserver: function() {
+  _disabledDatesObserver: Ember.observer('disabledDates', function() {
     this.get("bsDateTimePicker").disabledDates(this.get('disabledDates'));
-  }.observes("disabledDates"),
+  }),
 
-  _enabledDatesObserver: function() {
+  _enabledDatesObserver: Ember.observer('enabledDates', function() {
     this.get("bsDateTimePicker").enabledDates(this.get('enabledDates'));
-  }.observes("enabledDates"),
+  }),
 
-  _dateObserver: function() {
+  _dateObserver: Ember.observer('date', function() {
     var bsDateTimePickerFn = this.get("bsDateTimePicker");
 
     if(this.get("date") === undefined) {
@@ -111,11 +111,11 @@ var bsDateTimePickerComponent = Ember.Component.extend({
       bsDateTimePickerFn.date(this.get("date"));
     }
 
-  }.observes("date"),
+  }),
 
-  _destroyDatepicker: function() {
+  _destroyDatepicker: Ember.on('willDestroyElement', function() {
     this.get("bsDateTimePicker").destroy();
-  }.on("willDestroyElement"),
+  }),
 
   _buildConfig: function() {
     var config = {};
@@ -174,7 +174,7 @@ var bsDateTimePickerComponent = Ember.Component.extend({
 });
 
 
-var computedProps = ["minDate","maxDate","disabledDates","enabledDates","dateIcon"];
+var computedProps = Ember.A(["minDate","maxDate","disabledDates","enabledDates","dateIcon"]);
 var newClassConfig = {};
 for(var i=0; i<isDatetimepickerConfigKeys.length; i++) {
   if(!computedProps.contains(isDatetimepickerConfigKeys[i])) {
