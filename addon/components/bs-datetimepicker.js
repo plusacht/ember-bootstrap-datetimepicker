@@ -27,10 +27,16 @@ var bsDateTimePickerComponent = Ember.Component.extend({
   open: false,
   forceDateOutput: false,
 
-
-  _initDatepicker: Ember.on('didInsertElement', function() {
+  _insertDatepicker: Ember.on('didInsertElement', function() {
+    var target;
     var self = this;
-    var bsDateTimePicker = this.$().datetimepicker(this._buildConfig());
+    if (this.get('noIcon')) {
+      var targetClassNames = '.'+ this.get('textFieldClassNames').join('.');
+      target = this.$(targetClassNames);
+    } else {
+      target = this.$();
+    }
+    var bsDateTimePicker = target.datetimepicker(this._buildConfig());
     var bsDateTimePickerFn = bsDateTimePicker.data("DateTimePicker");
 
     this.set('bsDateTimePicker', bsDateTimePickerFn);

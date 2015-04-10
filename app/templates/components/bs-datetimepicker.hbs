@@ -3,6 +3,8 @@
 {{else}}
   {{view textFieldClass disabled=disabled name=textFieldName}}
 {{/if}}
+{{#unless noIcon}}
 <span class="input-group-addon">
   <span {{bind-attr class="dateIcon"}}></span>
 </span>
+{{/unless}}
