@@ -30,3 +30,9 @@
 ## 0.3.3
 
 * Upgrade to ember-cli 0.2.1
+
+## 0.4.0
+
+* Upgrade to ember-cli 0.2.3
+* Upgrade to Eonasdan/bootstrap-datetimepicker to 4.7.14
+* Don't use property extensions
