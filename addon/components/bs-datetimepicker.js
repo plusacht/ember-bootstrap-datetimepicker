@@ -8,7 +8,8 @@ var isDatetimepickerConfigKeys = Ember.keys(datetimepickerDefaultConfig);
 
 var bsDateTimePickerComponent = Ember.Component.extend({
   concatenatedProperties: ["textFieldClassNames"],
-  classNames: ["bs-datetimepicker-component"],
+  classNames: ["date"],
+  classNameBindings: ["inputGroupClass"],
   textFieldClass: Ember.TextField.extend(DateTimePickerTextFieldMixin),
   textFieldClassNames: ["form-control"],
   textFieldName: computed.alias("elementId"),
@@ -27,10 +28,16 @@ var bsDateTimePickerComponent = Ember.Component.extend({
   open: false,
   forceDateOutput: false,
 
-
   _initDatepicker: Ember.on('didInsertElement', function() {
+    var target;
     var self = this;
-    var bsDateTimePicker = this.$(".datetimepicker").datetimepicker(this._buildConfig());
+    if (this.get('noIcon')) {
+      var targetClassNames = '.'+ this.get('textFieldClassNames').join('.');
+      target = this.$(targetClassNames);
+    } else {
+      target = this.$();
+    }
+    var bsDateTimePicker = target.datetimepicker(this._buildConfig());
     var bsDateTimePickerFn = bsDateTimePicker.data("DateTimePicker");
 
     this.set('bsDateTimePicker', bsDateTimePickerFn);
@@ -124,6 +131,13 @@ var bsDateTimePickerComponent = Ember.Component.extend({
     }
     return config;
   },
+
+  inputGroupClass: Ember.computed(function() {
+    if(!this.get('noIcon')) {
+      return 'input-group';
+    }
+
+  }),
 
   /**
 
