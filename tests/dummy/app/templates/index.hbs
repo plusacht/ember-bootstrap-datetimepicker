@@ -23,12 +23,12 @@
       <h3>Minimum Setup</h3>
       <div>
         <p>
-          {{bs-datetimepicker date=date2}}
+          {{bs-datetimepicker date=model.date2}}
         </p>
         <h5>Code</h5>
         <p>
           <pre>&lt;p&gt;
-  \{{bs-datetimepicker date=date2}}
+  \{{bs-datetimepicker date=model.date2}}
 &lt;/p&gt;
         </pre>
         </p>
@@ -40,12 +40,12 @@
       <h3>Minimum Setup (forceDateOutput)</h3>
       <div>
         <p>
-          {{bs-datetimepicker date=date2 forceDateOutput=true}}
+          {{bs-datetimepicker date=model.date2 forceDateOutput=true}}
         </p>
         <h5>Code</h5>
         <p>
           <pre>&lt;p&gt;
-  \{{bs-datetimepicker date=date2 forceDateOutput=true}}
+  \{{bs-datetimepicker date=model.date2 forceDateOutput=true}}
 &lt;/p&gt;
         </pre>
         </p>
@@ -62,11 +62,11 @@
         <form class="form" role="form">
           <div class="form-group">
             <label>Date 1</label>
-            {{bs-datetimepicker date=date1 pickTime=false showToday=false format="Do MMM YYYY" textFieldName="date1"}}
+            {{bs-datetimepicker date=model.date1 pickTime=false showToday=false format="Do MMM YYYY" textFieldName="model.date1"}}
           </div>
           <div class="form-group">
             <label>Date 1 (readonly)</label>
-            {{bs-datetimepicker date=date1 pickTime=false showToday=false format="DD.MM.YYYY" textFieldName="date1a" disabled=true}}
+            {{bs-datetimepicker date=model.date1 pickTime=false showToday=false format="DD.MM.YYYY" textFieldName="model.date1a" disabled=true}}
           </div>
         </form>
         <h5>Code</h5>
@@ -74,11 +74,11 @@
 &lt;form class=&quot;form&quot; role=&quot;form&quot;&gt;
   &lt;div class=&quot;form-group&quot;&gt;
     &lt;label&gt;Date 1&lt;/label&gt;
-    \{{bs-datetimepicker date=date1 pickTime=false showToday=false format=&quot;Do MMM YYYY&quot; textFieldName=&quot;date1&quot;}}
+    \{{bs-datetimepicker date=model.date1 pickTime=false showToday=false format=&quot;Do MMM YYYY&quot; textFieldName=&quot;model.date1&quot;}}
   &lt;/div&gt;
   &lt;div class=&quot;form-group&quot;&gt;
     &lt;label&gt;Date 1 (readonly)&lt;/label&gt;
-    \{{bs-datetimepicker date=date1 pickTime=false showToday=false format=&quot;DD.MM.YYYY&quot; textFieldName=&quot;date1a&quot; disabled=true}}
+    \{{bs-datetimepicker date=model.date1 pickTime=false showToday=false format=&quot;DD.MM.YYYY&quot; textFieldName=&quot;model.date1a&quot; disabled=true}}
   &lt;/div&gt;
 &lt;/form&gt;</pre>
       </div>
@@ -94,15 +94,15 @@
         <form class="form" role="form">
           <div class="form-group">
             <label>Date aware of min/max date</label>
-            {{bs-datetimepicker date=date2 minDate=mindate maxDate=maxdate}}
+            {{bs-datetimepicker date=model.date2 minDate=model.mindate maxDate=model.maxdate}}
           </div>
           <div class="form-group">
             <label>Mindate</label>
-            {{bs-datetimepicker date=mindate pickTime=false showToday=false}}
+            {{bs-datetimepicker date=model.mindate pickTime=false showToday=false}}
           </div>
           <div class="form-group">
             <label>Maxdate</label>
-            {{bs-datetimepicker date=maxdate pickTime=false showToday=false}}
+            {{bs-datetimepicker date=model.maxdate pickTime=false showToday=false}}
           </div>
         </form>
         <h5>Code</h5>
@@ -110,15 +110,15 @@
           <pre>&lt;form class=&quot;form&quot; role=&quot;form&quot;&gt;
 &lt;div class=&quot;form-group&quot;&gt;
   &lt;label&gt;Date aware of min/max date&lt;/label&gt;
-  \{{bs-datetimepicker date=date2 minDate=mindate maxDate=maxdate}}
+  \{{bs-datetimepicker date=model.date2 minDate=model.mindate maxDate=model.maxdate}}
 &lt;/div&gt;
 &lt;div class=&quot;form-group&quot;&gt;
   &lt;label&gt;Mindate&lt;/label&gt;
-  \{{bs-datetimepicker date=mindate pickTime=false showToday=false}}
+  \{{bs-datetimepicker date=model.mindate pickTime=false showToday=false}}
 &lt;/div&gt;
 &lt;div class=&quot;form-group&quot;&gt;
   &lt;label&gt;Maxdate&lt;/label&gt;
-  \{{bs-datetimepicker date=maxdate pickTime=false showToday=false}}
+  \{{bs-datetimepicker date=model.maxdate pickTime=false showToday=false}}
 &lt;/div&gt;
 &lt;/form&gt;</pre>
         </p>
@@ -134,7 +134,7 @@
         <form class="form" role="form">
           <div class="form-group">
             <label>Font-Awesome</label>
-            {{bs-datetimepicker date=date2 dateIcon="fa fa-calendar" icons=faicons}}
+            {{bs-datetimepicker date=model.date2 dateIcon="fa fa-calendar" icons=model.faicons}}
           </div>
         </form>
         <h5>Code</h5>
@@ -142,7 +142,7 @@
           <pre>&lt;form class=&quot;form&quot; role=&quot;form&quot;&gt;
 &lt;div class=&quot;form-group&quot;&gt;
   &lt;label&gt;Font-Awesome&lt;/label&gt;
-  \{{bs-datetimepicker date=date2 dateIcon="fa fa-calendar" icons=faicons}}
+  \{{bs-datetimepicker date=model.date2 dateIcon="fa fa-calendar" icons=model.faicons}}
 &lt;/div&gt;
           </pre>
         </p>
@@ -162,8 +162,8 @@
               Every property beginning with "textField" will be exposed to the TextField view.
             </p>
             {{bs-datetimepicker
-                date=date1
-                textFieldName="date1b"
+                date=model.date1
+                textFieldName="model.date1b"
                 textFieldPlaceholder="Date"
                 textFieldReadOnly=true
                 }}
@@ -176,8 +176,8 @@
       Every property beginning with &quot;textField&quot; will be exposed to the TextField view.
     &lt;/p&gt;
     \{{bs-datetimepicker
-      date=date1
-      textFieldName=&quot;date1&quot;
+      date=model.date1
+      textFieldName=&quot;model.date1&quot;
       textFieldPlaceholder=&quot;Date&quot;
       textFieldReadOnly=true
     }}
@@ -200,8 +200,8 @@
         <form class="form" role="form">
           <div class="form-group">
             <label>With template</label>
-            {{#bs-datetimepicker date=date2}}
-              {{view Ember.TextField class="form-control" name="Date" placeholder="Date"}}
+            {{#bs-datetimepicker date=model.date2}}
+              {{input class="form-control" name="Date" placeholder="Date"}}
             {{/bs-datetimepicker}}
           </div>
         </form>
@@ -210,8 +210,8 @@
           <pre>&lt;form class=&quot;form&quot; role=&quot;form&quot;&gt;
   &lt;div class=&quot;form-group&quot;&gt;
     &lt;label&gt;With template&lt;/label&gt;
-    \{{#bs-datetimepicker date=date2}}
-      \{{view Ember.TextField disabled=disabled class=&quot;form-control&quot; name=&quot;Date&quot; placeholder=&quot;Date&quot;}}
+    \{{#bs-datetimepicker date=model.date2}}
+      \{{input disabled=disabled class=&quot;form-control&quot; name=&quot;Date&quot; placeholder=&quot;Date&quot;}}
     \{{/bs-datetimepicker}}
   &lt;/div&gt;
 &lt;/form&gt;
@@ -227,12 +227,12 @@
       <h3>No Icon (input field only)</h3>
       <div>
         <p style="position:relative;">
-          {{bs-datetimepicker date=date2 noIcon=true}}
+          {{bs-datetimepicker date=model.date2 noIcon=true}}
         </p>
         <h5>Code</h5>
         <p>
           <pre>&lt;p&gt;
-  \{{bs-datetimepicker date=date2 noIcon=true}}
+  \{{bs-datetimepicker date=model.date2 noIcon=true}}
 &lt;/p&gt;
         </pre>
         </p>
