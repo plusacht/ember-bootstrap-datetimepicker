@@ -106,6 +106,6 @@ This add-on is based on [bootstrap-datetimepicker](http://eonasdan.github.io/boo
 
 ## Legal ##
 
-[plus8](http://plus8.ch) gmbh &copy; 2014
+[plus8](http://plus8.ch) gmbh &copy; 2014-2015
 
 [Licensed under the MIT license](http://www.opensource.org/licenses/mit-license.php)
