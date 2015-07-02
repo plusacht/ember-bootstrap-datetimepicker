@@ -1,4 +1,4 @@
-  
+
 import Ember from 'ember';
 import DateTimePickerTextFieldMixin from 'ember-bootstrap-datetimepicker/mixins/datetimepicker_textfield';
 
@@ -49,7 +49,7 @@ var bsDateTimePickerComponent = Ember.Component.extend({
 
 
     bsDateTimePicker.on("dp.change", function(ev) {
-      if(Ember.isNone(ev.date)) {
+      if(!ev.date) {
         self.set("date", undefined);
       } else if (!ev.date.isSame(self.get('date'))) {
         if(self.forceDateOutput) {
