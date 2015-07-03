@@ -42,3 +42,31 @@ test("it shows the picker on input focus, then hides it after click outside", fu
     assert.equal($(".bootstrap-datetimepicker-widget").css("display"), undefined, "date picker is hidden again");
   });
 });
+
+
+test("test the 'showClear' option", function(assert) {
+  assert.expect(2);
+  component = this.subject({
+    useCurrent: true,
+    showClear: true
+  });
+
+  // initial render
+  this.$();
+
+  andThen(function() {
+    click($(".input-group-addon"));
+  });
+
+  andThen(function() {
+    assert.notEqual(component.get('date'), null);
+  });
+
+  andThen(function() {
+    click($("a[data-action='clear']"));
+  });
+
+  andThen(function() {
+    assert.equal(component.get('date'), null);
+  });
+});
