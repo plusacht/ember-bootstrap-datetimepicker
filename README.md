@@ -100,6 +100,14 @@ Change minDate so the jquery plugin will be updated with the minDate value
 App.DateExample.set('maxdate', moment("2015-03-01"));
 ```
 
+## Ember Compatibility ##
+
+**0.4.0**
+* 1.11.3
+* 1.12.1
+* 1.13.3
+
+
 ## Credits ##
 
 This add-on is based on [bootstrap-datetimepicker](http://eonasdan.github.io/bootstrap-datetimepicker/ "eonasdan's Bootstrap datetimepicker")
