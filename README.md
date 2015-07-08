@@ -102,7 +102,7 @@ App.DateExample.set('maxdate', moment("2015-03-01"));
 
 ## Ember Compatibility ##
 
-**0.4.0**
+**0.4.0 - 0.4.1**
 * 1.11.3
 * 1.12.1
 * 1.13.3
