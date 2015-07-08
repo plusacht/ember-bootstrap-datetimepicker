@@ -3,7 +3,7 @@
 var EmberAddon = require('ember-cli/lib/broccoli/ember-addon');
 
 var app = new EmberAddon({
-  'ember-bootstrap-datetimepicker': { 
+  'ember-bootstrap-datetimepicker': {
         'importBootstrapCSS': true,
     'importBootstrapJS': true,
     'importFontAwesome': true
@@ -28,5 +28,9 @@ app.import(app.bowerDirectory + '/ember-cli-moment-shim/moment-shim.js', {
     moment: ['default']
   }
 });
+
+if (app.env !== 'production') {
+  app.import('bower_components/ember/ember-template-compiler.js');
+}
 
 module.exports = app.toTree();
