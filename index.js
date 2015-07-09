@@ -12,7 +12,6 @@ module.exports = {
 		var bootstrapPath   = path.join(app.bowerDirectory,'/bootstrap/dist/');
     var options         = app.options['ember-bootstrap-datetimepicker'] || {};
 
-
 		// Import css theme from bootstrap
     if (options.importBootstrapTheme) {
       app.import(path.join(bootstrapPath, 'css/bootstrap-theme.css'));

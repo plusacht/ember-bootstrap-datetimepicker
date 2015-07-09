@@ -1,4 +1,3 @@
-/* global moment */
 import Ember from "ember";
 import startApp from '../helpers/start-app';
 import { test, moduleForComponent } from 'ember-qunit';
