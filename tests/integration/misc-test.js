@@ -1,4 +1,3 @@
-/* global moment */
 import Ember from "ember";
 import startApp from '../helpers/start-app';
 import { test, moduleForComponent } from 'ember-qunit';
@@ -6,6 +5,7 @@ import { test, moduleForComponent } from 'ember-qunit';
 var App, component;
 
 moduleForComponent('bs-datetimepicker', 'ember-bootstrap-datetimepicker integration', {
+  integration: true,
   setup: function() {
     App = startApp();
   },
@@ -21,10 +21,12 @@ moduleForComponent('bs-datetimepicker', 'ember-bootstrap-datetimepicker integrat
 
 test("it shows the picker on input focus, then hides it after click outside", function(assert) {
   assert.expect(3);
-  component = this.subject();
-
-  // initial render
-  this.$();
+  //component = this.subject();
+  this.render(
+    Ember.Handlebars.compile(
+      '{{bs-datetimepicker}}'
+    )
+  );
 
   andThen(function() {
     assert.equal($(".bootstrap-datetimepicker-widget").css("display"), undefined, "date picker is initially a hidden");
@@ -43,30 +45,17 @@ test("it shows the picker on input focus, then hides it after click outside", fu
   });
 });
 
-
-test("test the 'showClear' option", function(assert) {
-  assert.expect(2);
-  component = this.subject({
-    useCurrent: true,
-    showClear: true
-  });
+test("test yield", function(assert) {
+  assert.expect(1);
+  this.render(
+    Ember.Handlebars.compile(
+      '{{#bs-datetimepicker}}<label class="yieldholder">yield</label>{{input}}{{/bs-datetimepicker}}'
+    )
+  );
 
   // initial render
-  this.$();
+  //this.$();
 
-  andThen(function() {
-    click($(".input-group-addon"));
-  });
+  assert.equal($('label.yieldholder').text(), "yield");
 
-  andThen(function() {
-    assert.notEqual(component.get('date'), null);
-  });
-
-  andThen(function() {
-    click($("a[data-action='clear']"));
-  });
-
-  andThen(function() {
-    assert.equal(component.get('date'), null);
-  });
 });
