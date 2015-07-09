@@ -34,7 +34,7 @@ test("test the useCurrent option", function(assert) {
   });
 
   andThen(function() {
-    assert.notEqual(component.get('date'), null);
+    assert.notEqual(component.get('date'), undefined);
   });
 
   andThen(function() {
@@ -42,7 +42,7 @@ test("test the useCurrent option", function(assert) {
   });
 
   andThen(function() {
-    assert.equal(component.get('date'), null);
+    assert.equal(component.get('date'), undefined);
   });
 });
 
