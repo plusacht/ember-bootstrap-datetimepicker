@@ -14,7 +14,7 @@
     "qunit": "~1.17.1",
     "bootstrap": "~3.3.2",
     "moment": "~2.10.3",
-    "ember-cli-moment-shim": "~0.2.0",
+    "ember-cli-moment-shim": "0.2.0",
     "eonasdan-bootstrap-datetimepicker": "~4.14.30"
   },
   "devDependencies": {
