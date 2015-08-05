@@ -3,7 +3,6 @@ import moment from 'moment';
 import FaIconsMixin from 'dummy/mixins/faicons';
 
 export default Ember.Route.extend({
-
   model: function() {
     return Ember.Object.createWithMixins(FaIconsMixin,{
       date1: moment(),
