@@ -15,7 +15,8 @@ moduleForComponent('bs-datetimepicker', 'ember-bootstrap-datetimepicker unit', {
       Ember.run(component, 'destroy');
       component = null;
     }
-  }
+  },
+  needs: ['component:bs-datetimepicker-input']
 });
 
 
