@@ -9,6 +9,11 @@ Datetimepicker add-on for ember-cli
 ember install ember-bootstrap-datetimepicker
 ```
 
+Generate blueprints
+```bash
+ember generate ember-bootstrap-datetimepicker
+```
+
 ## Basic Usage
 
 ### Template
@@ -17,14 +22,14 @@ ember install ember-bootstrap-datetimepicker
 ```
 
 ### Brocfile.js ###
-The twitter bootstrap resources will not be imported to your resources by default. If you want the add-on to add it you have to specify it in the `Brocfile.js`
+The twitter bootstrap resources will not be imported to your resources by default. If you want the add-on to add it you have to specify it in the `ember-cli-build.js`
 
 ```javascript
-var app = new EmberAddon({
+var app = new EmberApp(defaults, {
   'ember-bootstrap-datetimepicker': {
-    "importBootstrapCSS": true,
-    "importBootstrapJS": true,
-    "importBootstrapTheme": true
+  "importBootstrapCSS": true,
+  "importBootstrapJS": true,
+  "importBootstrapTheme": true
   }
 });
 ```
