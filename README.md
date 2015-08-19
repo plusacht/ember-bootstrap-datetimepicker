@@ -6,8 +6,7 @@ Datetimepicker add-on for ember-cli
 ## Installation ##
 
 ```bash
-npm install ember-bootstrap-datetimepicker --save-dev
-ember g ember-bootstrap-datetimepicker
+ember install ember-bootstrap-datetimepicker
 ```
 
 ## Basic Usage
@@ -31,7 +30,7 @@ var app = new EmberAddon({
 ```
 
 ## Building yourself ##
-                                     
+
 Check out the demo on [github pages](http://plusacht.github.io/ember-bootstrap-datetimepicker "Bootstrap datetimepicker").
 Alternatively you can clone this repo and run the app
 

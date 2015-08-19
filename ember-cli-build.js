@@ -17,12 +17,6 @@ module.exports = function(defaults) {
     behave. You most likely want to be modifying `./index.js` or app's build file
   */
 
-  app.import(app.bowerDirectory + '/ember-cli-moment-shim/moment-shim.js', {
-    exports: {
-      moment: ['default']
-    }
-  });
-
   if (app.env !== 'production') {
     app.import('bower_components/ember/ember-template-compiler.js');
   }
