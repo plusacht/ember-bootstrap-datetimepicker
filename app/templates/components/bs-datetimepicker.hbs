@@ -1,7 +1,7 @@
 {{#if hasBlock}}
   {{yield}}
 {{else}}
-  {{view textFieldClass disabled=disabled name=textFieldName}}
+  {{bs-datetimepicker-input disabled=disabled name=textFieldName}}
 {{/if}}
 {{#unless noIcon}}
 <span class="input-group-addon">

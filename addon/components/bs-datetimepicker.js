@@ -1,5 +1,4 @@
 import Ember from 'ember';
-import DateTimePickerTextFieldMixin from 'ember-bootstrap-datetimepicker/mixins/datetimepicker_textfield';
 
 var computed = Ember.computed;
 var datetimepickerDefaultConfig = Ember.$.fn.datetimepicker.defaults;
@@ -9,7 +8,6 @@ var bsDateTimePickerComponent = Ember.Component.extend({
   concatenatedProperties: ['textFieldClassNames'],
   classNames: ['date'],
   classNameBindings: ['inputGroupClass'],
-  textFieldClass: Ember.TextField.extend(DateTimePickerTextFieldMixin),
   textFieldClassNames: ['form-control'],
   textFieldName: computed.alias('elementId'),
   textFieldOptions: null,
