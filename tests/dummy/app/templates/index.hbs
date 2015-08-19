@@ -5,11 +5,9 @@
           <li><a href="#example1">Minimum Setup</a></li>
           <li><a href="#example2">Init config</a></li>
           <li><a href="#example3">Min/Max date</a></li>
-          <!-- li><a href="#example4">En/Disabled Dates</a></li -->
           <li><a href="#example4">Font-Awesome Icons</a></li>
-          <li><a href="#example5">TextField config</a></li>
-          <li><a href="#example6">Template Block</a></li>
-          <li><a href="#example7">No Icon</a></li>
+          <li><a href="#example5">Template Block</a></li>
+          <li><a href="#example6">No Icon</a></li>
       </ul>
     </div>
   </div>
@@ -151,56 +149,19 @@
 
 
 
+
+
+
+
     <div id="example5">
       <a name="example5"></a>
-      <h3>TextField config</h3>
-
-      <div>
-        <form class="form" role="form">
-          <div class="form-group">
-            <p>
-              Every property beginning with "textField" will be exposed to the TextField view.
-            </p>
-            {{bs-datetimepicker
-                date=model.date1
-                textFieldName="model.date1b"
-                textFieldPlaceholder="Date"
-                textFieldReadOnly=true
-                }}
-          </div>
-        </form>
-        <h5>Code</h5>
-        <pre>&lt;form class=&quot;form&quot; role=&quot;form&quot;&gt;
-  &lt;div class=&quot;form-group&quot;&gt;
-    &lt;p&gt;
-      Every property beginning with &quot;textField&quot; will be exposed to the TextField view.
-    &lt;/p&gt;
-    \{{bs-datetimepicker
-      date=model.date1
-      textFieldName=&quot;model.date1&quot;
-      textFieldPlaceholder=&quot;Date&quot;
-      textFieldReadOnly=true
-    }}
-  &lt;/div&gt;
-&lt;/form&gt;</pre>
-      </div>
-    </div>
-
-
-
-
-
-
-
-    <div id="example6">
-      <a name="example6"></a>
       <h3>Template block</h3>
 
       <div>
         <form class="form" role="form">
           <div class="form-group">
+            <label>With template</label>
             {{#bs-datetimepicker date=model.date2}}
-              <label>With template</label>
               {{input class="form-control" name="Date" placeholder="Date"}}
             {{/bs-datetimepicker}}
           </div>
@@ -209,8 +170,8 @@
         <p>
           <pre>&lt;form class=&quot;form&quot; role=&quot;form&quot;&gt;
   &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label&gt;With template&lt;/label&gt;
     \{{#bs-datetimepicker date=model.date2}}
-      &lt;label&gt;With template&lt;/label&gt;
       \{{input disabled=disabled class=&quot;form-control&quot; name=&quot;Date&quot; placeholder=&quot;Date&quot;}}
     \{{/bs-datetimepicker}}
   &lt;/div&gt;
@@ -222,8 +183,8 @@
 
 
 
-    <div id="example7">
-      <a name="example7"></a>
+    <div id="example6">
+      <a name="example6"></a>
       <h3>No Icon (input field only)</h3>
       <div>
         <p class="noicon">
