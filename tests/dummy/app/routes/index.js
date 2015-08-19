@@ -4,7 +4,7 @@ import FaIconsMixin from 'dummy/mixins/faicons';
 
 export default Ember.Route.extend({
   model: function() {
-    return Ember.Object.createWithMixins(FaIconsMixin,{
+    return Ember.Object.extend(FaIconsMixin).create({
       date1: moment(),
       date2: undefined,
       mindate: moment("2014-11-01"),
