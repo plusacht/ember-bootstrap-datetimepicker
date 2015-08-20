@@ -12,25 +12,11 @@ var bsDateTimePickerComponent = Ember.Component.extend({
   classNames: ['date'],
   classNameBindings: ['inputGroupClass'],
   textFieldClassNames: ['form-control'],
-  date: null,
   bsDateTimePicker: null,
-
-  // Computed options
-  minDate: datetimepickerDefaultConfig['minDate'],
-  maxDate: datetimepickerDefaultConfig['maxDate'],
-  disabledDates: [],
-  enabledDates: [],
+  noIcon: false,
   dateIcon: 'glyphicon glyphicon-calendar',
 
-  disabled: false,
-  open: false,
-  forceDateOutput: false,
-
-  inputGroupClass: Ember.computed(function() {
-    if (!this.get('noIcon')) {
-      return 'input-group';
-    }
-  }),
+  inputGroupClass: undefined,
 
   _initDatepicker: on('didInsertElement', function() {
     var target;
@@ -45,101 +31,84 @@ var bsDateTimePickerComponent = Ember.Component.extend({
     var bsDateTimePickerFn = bsDateTimePicker.data('DateTimePicker');
 
     this.set('bsDateTimePicker', bsDateTimePickerFn);
-    if (self.get('date') === undefined) {
-      bsDateTimePickerFn.date(null);
-    } else {
-      bsDateTimePickerFn.date(self.get('date'));
-    }
 
     bsDateTimePicker.on('dp.change', function(ev) {
-      if (Ember.isNone(ev.date) || ev.date === false) {
-        self.set('date', undefined);
-      } else if (!ev.date.isSame(self.get('date'))) {
-        if (self.forceDateOutput) {
-          self.set('date', ev.date.toDate());
-        } else {
-          self.set('date', ev.date);
+      if(self.get('updateDate')) {
+        if (Ember.isNone(ev.date) || ev.date === false) {
+          self.getAttr('updateDate')(undefined);
+        } else if (!ev.date.isSame(self.getAttr('date'))) {
+          if (self.getAttr('forceDateOutput')) {
+            self.getAttr('updateDate')(ev.date.toDate());
+          } else {
+            self.getAttr('updateDate')(ev.date);
+          }
         }
       }
-    });
-
-    this._disabledObserver();
-
-    this.addObserver('disabled', function() {
-      if (this.get('disabled')) {
-        this.get('bsDateTimePicker').disable();
-      } else {
-        this.get('bsDateTimePicker').enable();
+      else {
+        //warn
       }
     });
 
-    this.addObserver('open', function() {
-      if (this.get('open')) {
-        this.get('bsDateTimePicker').show();
-      } else {
-        this.get('bsDateTimePicker').hide();
-      }
-    });
+    self._updateDateTimePicker();
 
-    this.addObserver('minDate', function() {
-      if (Ember.isNone(this.get('minDate'))) {
-        this.get('bsDateTimePicker').minDate(false);
-      } else {
-        this.get('bsDateTimePicker').minDate(this.get('minDate'));
-      }
-    });
-
-    this.addObserver('maxDate', function() {
-      if (Ember.isNone(this.get('maxDate'))) {
-        this.get('bsDateTimePicker').maxDate(false);
-      } else {
-        this.get('bsDateTimePicker').maxDate(this.get('maxDate'));
-      }
-    });
-
-    this.addObserver('disabledDates', function() {
-      this.get('bsDateTimePicker').disabledDates(this.get('disabledDates'));
-    });
-
-    this.addObserver('enabledDates', function() {
-      this.get('bsDateTimePicker').enabledDates(this.get('enabledDates'));
-    });
-
-    this.addObserver('date', function() {
-      var bsDateTimePickerFn = this.get('bsDateTimePicker');
-
-      if (this.get('date') === undefined) {
-        bsDateTimePickerFn.date(null);
-      } else {
-        bsDateTimePickerFn.date(this.get('date'));
-      }
-
-    });
-
-
-    if (self.get('open')) {
+    if (self.getAttr('open')) {
       self.get('bsDateTimePicker').show();
     }
   }),
 
+  didReceiveAttrs() {
+    this._updateDateTimePicker();
+  },
 
-  _disabledObserver: Ember.observer('disabled', function() {
-    if (this.get('disabled')) {
-      this.get('bsDateTimePicker').disable();
-    } else {
-      this.get('bsDateTimePicker').enable();
+  _updateDateTimePicker() {
+
+    var dateTimePicker = this.get('bsDateTimePicker');
+    if(dateTimePicker) {
+      if (this.getAttr('disabled')) {
+        dateTimePicker.disable();
+      } else {
+        dateTimePicker.enable();
+      }
+
+      if (this.getAttr('date') === undefined) {
+        dateTimePicker.date(null);
+      } else {
+        dateTimePicker.date(this.getAttr('date'));
+      }
+
+      if (!this.getAttr('minDate')) {
+        dateTimePicker.minDate(false);
+      } else {
+        dateTimePicker.minDate(this.getAttr('minDate'));
+      }
+
+      if (!this.getAttr('maxDate')) {
+        dateTimePicker.maxDate(false);
+      } else {
+        dateTimePicker.maxDate(this.getAttr('maxDate'));
+      }
+
+      if (!this.getAttr('disabledDates')) {
+        dateTimePicker.disabledDates([]);
+      } else {
+        dateTimePicker.disabledDates(this.getAttr('disabledDates'));
+      }
+
+      if (!this.getAttr('enabledDates')) {
+        dateTimePicker.enabledDates([]);
+      } else {
+        dateTimePicker.enabledDates(this.getAttr('enabledDates'));
+      }
     }
-  }),
 
+    if (!this.getAttr('noIcon')) {
+       this.set('inputGroupClass', 'input-group');
+     } else {
+       this.set('inputGroupClass', undefined);
+    }
+  },
 
   _destroyDatepicker: on('willDestroyElement', function() {
-    this.removeObserver('disabled');
-    this.removeObserver('open');
-    this.removeObserver('minDate');
-    this.removeObserver('maxDate');
-    this.removeObserver('disabledDates');
-    this.removeObserver('enabledDates');
-    this.removeObserver('date');
 
     this.get('bsDateTimePicker').destroy();
   }),

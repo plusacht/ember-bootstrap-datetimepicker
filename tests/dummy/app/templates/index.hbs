@@ -21,12 +21,15 @@
       <h3>Minimum Setup</h3>
       <div>
         <p>
-          {{bs-datetimepicker date=model.date2}}
+          {{bs-datetimepicker date=model.date2 updateDate=(action (mut model.date2))}}
+        </p>
+        <p>
+          Date: {{model.date2}}
         </p>
         <h5>Code</h5>
         <p>
           <pre>&lt;p&gt;
-  \{{bs-datetimepicker date=model.date2}}
+  \{{bs-datetimepicker date=model.date2 updateDate=(action (mut model.date2))}}
 &lt;/p&gt;
         </pre>
         </p>
@@ -38,12 +41,12 @@
       <h3>Minimum Setup (forceDateOutput)</h3>
       <div>
         <p>
-          {{bs-datetimepicker date=model.date2 forceDateOutput=true}}
+          {{bs-datetimepicker date=model.date2 forceDateOutput=true updateDate=(action (mut model.date2))}}
         </p>
         <h5>Code</h5>
         <p>
           <pre>&lt;p&gt;
-  \{{bs-datetimepicker date=model.date2 forceDateOutput=true}}
+  \{{bs-datetimepicker date=model.date2 forceDateOutput=true updateDate=(action (mut model.date2))}}
 &lt;/p&gt;
         </pre>
         </p>
@@ -60,11 +63,11 @@
         <form class="form" role="form">
           <div class="form-group">
             <label>Date 1</label>
-            {{bs-datetimepicker date=model.date1 pickTime=false showToday=false format="Do MMM YYYY" textFieldName="model.date1"}}
+            {{bs-datetimepicker date=model.date1 pickTime=false showToday=false format="Do MMM YYYY" updateDate=(action (mut model.date1))}}
           </div>
           <div class="form-group">
             <label>Date 1 (readonly)</label>
-            {{bs-datetimepicker date=model.date1 pickTime=false showToday=false format="DD.MM.YYYY" textFieldName="model.date1a" disabled=true}}
+            {{bs-datetimepicker date=model.date1 pickTime=false showToday=false format="DD.MM.YYYY" disabled=true}}
           </div>
         </form>
         <h5>Code</h5>
@@ -72,11 +75,11 @@
 &lt;form class=&quot;form&quot; role=&quot;form&quot;&gt;
   &lt;div class=&quot;form-group&quot;&gt;
     &lt;label&gt;Date 1&lt;/label&gt;
-    \{{bs-datetimepicker date=model.date1 pickTime=false showToday=false format=&quot;Do MMM YYYY&quot; textFieldName=&quot;model.date1&quot;}}
+    \{{bs-datetimepicker date=model.date1 pickTime=false showToday=false format=&quot;Do MMM YYYY&quot;  updateDate=(action (mut model.date1))}}
   &lt;/div&gt;
   &lt;div class=&quot;form-group&quot;&gt;
     &lt;label&gt;Date 1 (readonly)&lt;/label&gt;
-    \{{bs-datetimepicker date=model.date1 pickTime=false showToday=false format=&quot;DD.MM.YYYY&quot; textFieldName=&quot;model.date1a&quot; disabled=true}}
+    \{{bs-datetimepicker date=model.date1 pickTime=false showToday=false format=&quot;DD.MM.YYYY&quot; disabled=true}}
   &lt;/div&gt;
 &lt;/form&gt;</pre>
       </div>
@@ -92,15 +95,15 @@
         <form class="form" role="form">
           <div class="form-group">
             <label>Date aware of min/max date</label>
-            {{bs-datetimepicker date=model.date2 minDate=model.mindate maxDate=model.maxdate}}
+            {{bs-datetimepicker date=model.date2 minDate=model.mindate maxDate=model.maxdate updateDate=(action (mut model.date2))}}
           </div>
           <div class="form-group">
             <label>Mindate</label>
-            {{bs-datetimepicker date=model.mindate pickTime=false showToday=false}}
+            {{bs-datetimepicker date=model.mindate pickTime=false showToday=false updateDate=(action (mut model.mindate))}}
           </div>
           <div class="form-group">
             <label>Maxdate</label>
-            {{bs-datetimepicker date=model.maxdate pickTime=false showToday=false}}
+            {{bs-datetimepicker date=model.maxdate pickTime=false showToday=false updateDate=(action (mut model.maxdate))}}
           </div>
         </form>
         <h5>Code</h5>
@@ -108,15 +111,15 @@
           <pre>&lt;form class=&quot;form&quot; role=&quot;form&quot;&gt;
 &lt;div class=&quot;form-group&quot;&gt;
   &lt;label&gt;Date aware of min/max date&lt;/label&gt;
-  \{{bs-datetimepicker date=model.date2 minDate=model.mindate maxDate=model.maxdate}}
+  \{{bs-datetimepicker date=model.date2 minDate=model.mindate maxDate=model.maxdate updateDate=(action (mut model.date2))}}
 &lt;/div&gt;
 &lt;div class=&quot;form-group&quot;&gt;
   &lt;label&gt;Mindate&lt;/label&gt;
-  \{{bs-datetimepicker date=model.mindate pickTime=false showToday=false}}
+  \{{bs-datetimepicker date=model.mindate pickTime=false showToday=false updateDate=(action (mut model.mindate))}}
 &lt;/div&gt;
 &lt;div class=&quot;form-group&quot;&gt;
   &lt;label&gt;Maxdate&lt;/label&gt;
-  \{{bs-datetimepicker date=model.maxdate pickTime=false showToday=false}}
+  \{{bs-datetimepicker date=model.maxdate pickTime=false showToday=false updateDate=(action (mut model.maxdate))}}
 &lt;/div&gt;
 &lt;/form&gt;</pre>
         </p>

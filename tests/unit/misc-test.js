@@ -15,16 +15,21 @@ moduleForComponent('bs-datetimepicker', 'ember-bootstrap-datetimepicker unit', {
       Ember.run(component, 'destroy');
       component = null;
     }
-  }
+  },
+  needs: ['component:bs-datetimepicker']
 });
 
 
 
 test("test the useCurrent option", function(assert) {
   assert.expect(2);
+  var date;
   component = this.subject({
     useCurrent:true,
-    showClear:true
+    showClear:true,
+    updateDate: function(d) {
+      date = d;
+    }
   });
 
   this.$();
@@ -34,7 +39,7 @@ test("test the useCurrent option", function(assert) {
   });
 
   andThen(function() {
-    assert.notEqual(component.get('date'), undefined);
+    assert.notEqual(date, undefined);
   });
 
   andThen(function() {
@@ -42,7 +47,7 @@ test("test the useCurrent option", function(assert) {
   });
 
   andThen(function() {
-    assert.equal(component.get('date'), undefined);
+    assert.equal(date, undefined);
   });
 });
 
