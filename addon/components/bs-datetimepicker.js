@@ -1,11 +1,8 @@
 import Ember from 'ember';
 
-const {on} = Ember;
+const {on,computed} = Ember;
 
-const datetimepickerDefaultConfig = Ember.$.fn.datetimepicker.defaults;
-const isDatetimepickerConfigKeys = Object.keys(datetimepickerDefaultConfig);
 const computedProps = Ember.A(['minDate', 'maxDate', 'disabledDates', 'enabledDates', 'dateIcon']);
-const newClassConfig = {};
 
 var bsDateTimePickerComponent = Ember.Component.extend({
   concatenatedProperties: ['textFieldClassNames'],
@@ -13,17 +10,18 @@ var bsDateTimePickerComponent = Ember.Component.extend({
   classNameBindings: ['inputGroupClass'],
   textFieldClassNames: ['form-control'],
   bsDateTimePicker: null,
-  noIcon: false,
   dateIcon: 'glyphicon glyphicon-calendar',
 
-  inputGroupClass: undefined,
+  inputGroupClass: computed('attrs.noIcon', function() {
+    if (!this.getAttr('noIcon')) {
+       return 'input-group';
+     }
+  }),
 
   _initDatepicker: on('didInsertElement', function() {
     var target;
-    var self = this;
-    if (this.get('noIcon')) {
-      var targetClassNames = '.' + this.get('textFieldClassNames').join('.');
-      target = this.$(targetClassNames);
+    if (this.getAttr('noIcon')) {
+      target = this.$('.' + this.get('textFieldClassNames').join('.'));
     } else {
       target = this.$();
     }
@@ -33,26 +31,26 @@ var bsDateTimePickerComponent = Ember.Component.extend({
     this.set('bsDateTimePicker', bsDateTimePickerFn);
 
     bsDateTimePicker.on('dp.change', function(ev) {
-      if(self.get('updateDate')) {
+      if(this.get('updateDate')) {
         if (Ember.isNone(ev.date) || ev.date === false) {
-          self.getAttr('updateDate')(undefined);
-        } else if (!ev.date.isSame(self.getAttr('date'))) {
-          if (self.getAttr('forceDateOutput')) {
-            self.getAttr('updateDate')(ev.date.toDate());
+          this.getAttr('updateDate')(undefined);
+        } else if (!ev.date.isSame(this.getAttr('date'))) {
+          if (this.getAttr('forceDateOutput')) {
+            this.getAttr('updateDate')(ev.date.toDate());
           } else {
-            self.getAttr('updateDate')(ev.date);
+            this.getAttr('updateDate')(ev.date);
           }
         }
       }
       else {
         //warn
       }
-    });
+    }.bind(this));
 
-    self._updateDateTimePicker();
+    this._updateDateTimePicker();
 
-    if (self.getAttr('open')) {
-      self.get('bsDateTimePicker').show();
+    if (this.getAttr('open')) {
+      this.get('bsDateTimePicker').show();
     }
   }),
 
@@ -100,36 +98,27 @@ var bsDateTimePickerComponent = Ember.Component.extend({
         dateTimePicker.enabledDates(this.getAttr('enabledDates'));
       }
     }
-
-    if (!this.getAttr('noIcon')) {
-       this.set('inputGroupClass', 'input-group');
-     } else {
-       this.set('inputGroupClass', undefined);
-    }
   },
 
   _destroyDatepicker: on('willDestroyElement', function() {
-
     this.get('bsDateTimePicker').destroy();
   }),
 
 
   _buildConfig() {
+    var datetimepickerDefaultConfig = Ember.$.fn.datetimepicker.defaults;
+    var isDatetimepickerConfigKeys = Object.keys(datetimepickerDefaultConfig);
     var config = {};
     for (var i = 0; i < isDatetimepickerConfigKeys.length; i++) {
-      config[isDatetimepickerConfigKeys[i]] = this.get(isDatetimepickerConfigKeys[i]);
+      if (!computedProps.contains(isDatetimepickerConfigKeys[i])) {
+        config[isDatetimepickerConfigKeys[i]] = this.getWithDefault(
+          'attrs.'+isDatetimepickerConfigKeys[i],
+          datetimepickerDefaultConfig[isDatetimepickerConfigKeys[i]]);
+      }
     }
 
     return config;
   }
 });
-
-for (var i = 0; i < isDatetimepickerConfigKeys.length; i++) {
-  if (!computedProps.contains(isDatetimepickerConfigKeys[i])) {
-    newClassConfig[isDatetimepickerConfigKeys[i]] = datetimepickerDefaultConfig[isDatetimepickerConfigKeys[i]];
-  }
-}
-
-bsDateTimePickerComponent.reopen(newClassConfig);
 
 export default bsDateTimePickerComponent;
