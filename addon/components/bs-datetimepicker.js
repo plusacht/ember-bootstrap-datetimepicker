@@ -31,25 +31,27 @@ var bsDateTimePickerComponent = Ember.Component.extend({
     this.set('bsDateTimePicker', bsDateTimePickerFn);
 
     bsDateTimePicker.on('dp.change', function(ev) {
-      if(this.get('updateDate')) {
-        if (Ember.isNone(ev.date) || ev.date === false) {
-          this.getAttr('updateDate')(undefined);
-        } else if (!ev.date.isSame(this.getAttr('date'))) {
-          if (this.getAttr('forceDateOutput')) {
-            this.getAttr('updateDate')(ev.date.toDate());
-          } else {
-            this.getAttr('updateDate')(ev.date);
+      Ember.run( function(){
+        if(this.get('updateDate')) {
+          if (Ember.isNone(ev.date) || ev.date === false) {
+            this.attrs.updateDate(undefined);
+          } else if (!ev.date.isSame(this.getAttr('date'))) {
+            if (this.attrs.forceDateOutput) {
+              this.attrs.updateDate(ev.date.toDate());
+            } else {
+              this.attrs.updateDate(ev.date);
+            }
           }
         }
-      }
-      else {
-        //warn
-      }
+        else {
+          //warn
+        }
+      }.bind(this));
     }.bind(this));
 
     this._updateDateTimePicker();
 
-    if (this.getAttr('open')) {
+    if (this.attrs.open) {
       this.get('bsDateTimePicker').show();
     }
   }),
