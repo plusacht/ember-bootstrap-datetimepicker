@@ -14,6 +14,22 @@ Generate blueprints
 ember generate ember-bootstrap-datetimepicker
 ```
 
+## Ember 2
+There are some breaking-changes when using this addon > v0.4.1
+
+Two-way bindings are replaced by data down, actions up (DDAU).
+See: http://emberjs.com/blog/2015/06/12/ember-1-13-0-released.html#toc_ember-2-0-beta
+
+Before:
+```handlebars
+{{bs-datetimepicker date=mydate format='YYYY-MM-DD'}}
+```
+
+After:
+```handlebars
+{{bs-datetimepicker date=mydate format='YYYY-MM-DD' updateDate=(action (mut model.date2))}}
+``` 
+
 ## Basic Usage
 
 ### Template
