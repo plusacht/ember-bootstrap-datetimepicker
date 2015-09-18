@@ -1,7 +1,6 @@
 import Ember from 'ember';
 
 const {on,computed} = Ember;
-
 const computedProps = Ember.A(['minDate', 'maxDate', 'disabledDates', 'enabledDates', 'dateIcon']);
 
 var bsDateTimePickerComponent = Ember.Component.extend({
@@ -32,14 +31,14 @@ var bsDateTimePickerComponent = Ember.Component.extend({
 
     bsDateTimePicker.on('dp.change', function(ev) {
       Ember.run( function(){
-        if(this.get('updateDate')) {
+        if(this.attrs.updateDate) {
           if (Ember.isNone(ev.date) || ev.date === false) {
-            this.attrs.updateDate(undefined);
+            this.sendAction('updateDate', undefined);
           } else if (!ev.date.isSame(this.getAttr('date'))) {
             if (this.attrs.forceDateOutput) {
-              this.attrs.updateDate(ev.date.toDate());
+              this.sendAction('updateDate', ev.date.toDate());
             } else {
-              this.attrs.updateDate(ev.date);
+              this.sendAction('updateDate', ev.date);
             }
           }
         }
