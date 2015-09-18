@@ -1,4 +1,5 @@
 import Ember from "ember";
+import hbs from 'htmlbars-inline-precompile';
 import startApp from '../helpers/start-app';
 import { test, moduleForComponent } from 'ember-qunit';
 
@@ -53,9 +54,30 @@ test("test yield", function(assert) {
     )
   );
 
-  // initial render
-  //this.$();
-
   assert.equal($('label.yieldholder').text(), "yield");
+});
 
+
+test("test the useCurrent option", function(assert) {
+  assert.expect(2);
+
+  var handleDateCnt = 0;
+  this.on('handleDate', val => {
+    var cnt = ++handleDateCnt;
+    if(cnt === 1) {
+      assert.ok(val);
+    }
+    else if(cnt === 2) {
+      assert.equal(val, undefined);
+    }
+  });
+  this.render(hbs`{{bs-datetimepicker useCurrent=true showClear=true updateDate='handleDate'}}`);
+
+  andThen(function() {
+    click($(".input-group-addon"));
+  });
+
+  andThen(function() {
+    click($("a[data-action='clear']"));
+  });
 });

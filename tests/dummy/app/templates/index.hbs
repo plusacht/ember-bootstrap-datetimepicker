@@ -5,11 +5,9 @@
           <li><a href="#example1">Minimum Setup</a></li>
           <li><a href="#example2">Init config</a></li>
           <li><a href="#example3">Min/Max date</a></li>
-          <!-- li><a href="#example4">En/Disabled Dates</a></li -->
           <li><a href="#example4">Font-Awesome Icons</a></li>
-          <li><a href="#example5">TextField config</a></li>
-          <li><a href="#example6">Template Block</a></li>
-          <li><a href="#example7">No Icon</a></li>
+          <li><a href="#example5">Template Block</a></li>
+          <li><a href="#example6">No Icon</a></li>
       </ul>
     </div>
   </div>
@@ -23,12 +21,15 @@
       <h3>Minimum Setup</h3>
       <div>
         <p>
-          {{bs-datetimepicker date=model.date2}}
+          {{bs-datetimepicker date=model.date2 updateDate=(action (mut model.date2))}}
+        </p>
+        <p>
+          Date: {{model.date2}}
         </p>
         <h5>Code</h5>
         <p>
           <pre>&lt;p&gt;
-  \{{bs-datetimepicker date=model.date2}}
+  \{{bs-datetimepicker date=model.date2 updateDate=(action (mut model.date2))}}
 &lt;/p&gt;
         </pre>
         </p>
@@ -40,12 +41,12 @@
       <h3>Minimum Setup (forceDateOutput)</h3>
       <div>
         <p>
-          {{bs-datetimepicker date=model.date2 forceDateOutput=true}}
+          {{bs-datetimepicker date=model.date2 forceDateOutput=true updateDate=(action (mut model.date2))}}
         </p>
         <h5>Code</h5>
         <p>
           <pre>&lt;p&gt;
-  \{{bs-datetimepicker date=model.date2 forceDateOutput=true}}
+  \{{bs-datetimepicker date=model.date2 forceDateOutput=true updateDate=(action (mut model.date2))}}
 &lt;/p&gt;
         </pre>
         </p>
@@ -62,11 +63,11 @@
         <form class="form" role="form">
           <div class="form-group">
             <label>Date 1</label>
-            {{bs-datetimepicker date=model.date1 pickTime=false showToday=false format="Do MMM YYYY" textFieldName="model.date1"}}
+            {{bs-datetimepicker date=model.date1 pickTime=false showToday=false format="Do MMM YYYY" updateDate=(action (mut model.date1))}}
           </div>
           <div class="form-group">
             <label>Date 1 (readonly)</label>
-            {{bs-datetimepicker date=model.date1 pickTime=false showToday=false format="DD.MM.YYYY" textFieldName="model.date1a" disabled=true}}
+            {{bs-datetimepicker date=model.date1 pickTime=false showToday=false format="DD.MM.YYYY" disabled=true}}
           </div>
         </form>
         <h5>Code</h5>
@@ -74,11 +75,11 @@
 &lt;form class=&quot;form&quot; role=&quot;form&quot;&gt;
   &lt;div class=&quot;form-group&quot;&gt;
     &lt;label&gt;Date 1&lt;/label&gt;
-    \{{bs-datetimepicker date=model.date1 pickTime=false showToday=false format=&quot;Do MMM YYYY&quot; textFieldName=&quot;model.date1&quot;}}
+    \{{bs-datetimepicker date=model.date1 pickTime=false showToday=false format=&quot;Do MMM YYYY&quot;  updateDate=(action (mut model.date1))}}
   &lt;/div&gt;
   &lt;div class=&quot;form-group&quot;&gt;
     &lt;label&gt;Date 1 (readonly)&lt;/label&gt;
-    \{{bs-datetimepicker date=model.date1 pickTime=false showToday=false format=&quot;DD.MM.YYYY&quot; textFieldName=&quot;model.date1a&quot; disabled=true}}
+    \{{bs-datetimepicker date=model.date1 pickTime=false showToday=false format=&quot;DD.MM.YYYY&quot; disabled=true}}
   &lt;/div&gt;
 &lt;/form&gt;</pre>
       </div>
@@ -94,15 +95,15 @@
         <form class="form" role="form">
           <div class="form-group">
             <label>Date aware of min/max date</label>
-            {{bs-datetimepicker date=model.date2 minDate=model.mindate maxDate=model.maxdate}}
+            {{bs-datetimepicker date=model.date2 minDate=model.mindate maxDate=model.maxdate updateDate=(action (mut model.date2))}}
           </div>
           <div class="form-group">
             <label>Mindate</label>
-            {{bs-datetimepicker date=model.mindate pickTime=false showToday=false}}
+            {{bs-datetimepicker date=model.mindate pickTime=false showToday=false updateDate=(action (mut model.mindate))}}
           </div>
           <div class="form-group">
             <label>Maxdate</label>
-            {{bs-datetimepicker date=model.maxdate pickTime=false showToday=false}}
+            {{bs-datetimepicker date=model.maxdate pickTime=false showToday=false updateDate=(action (mut model.maxdate))}}
           </div>
         </form>
         <h5>Code</h5>
@@ -110,15 +111,15 @@
           <pre>&lt;form class=&quot;form&quot; role=&quot;form&quot;&gt;
 &lt;div class=&quot;form-group&quot;&gt;
   &lt;label&gt;Date aware of min/max date&lt;/label&gt;
-  \{{bs-datetimepicker date=model.date2 minDate=model.mindate maxDate=model.maxdate}}
+  \{{bs-datetimepicker date=model.date2 minDate=model.mindate maxDate=model.maxdate updateDate=(action (mut model.date2))}}
 &lt;/div&gt;
 &lt;div class=&quot;form-group&quot;&gt;
   &lt;label&gt;Mindate&lt;/label&gt;
-  \{{bs-datetimepicker date=model.mindate pickTime=false showToday=false}}
+  \{{bs-datetimepicker date=model.mindate pickTime=false showToday=false updateDate=(action (mut model.mindate))}}
 &lt;/div&gt;
 &lt;div class=&quot;form-group&quot;&gt;
   &lt;label&gt;Maxdate&lt;/label&gt;
-  \{{bs-datetimepicker date=model.maxdate pickTime=false showToday=false}}
+  \{{bs-datetimepicker date=model.maxdate pickTime=false showToday=false updateDate=(action (mut model.maxdate))}}
 &lt;/div&gt;
 &lt;/form&gt;</pre>
         </p>
@@ -151,56 +152,19 @@
 
 
 
+
+
+
+
     <div id="example5">
       <a name="example5"></a>
-      <h3>TextField config</h3>
-
-      <div>
-        <form class="form" role="form">
-          <div class="form-group">
-            <p>
-              Every property beginning with "textField" will be exposed to the TextField view.
-            </p>
-            {{bs-datetimepicker
-                date=model.date1
-                textFieldName="model.date1b"
-                textFieldPlaceholder="Date"
-                textFieldReadOnly=true
-                }}
-          </div>
-        </form>
-        <h5>Code</h5>
-        <pre>&lt;form class=&quot;form&quot; role=&quot;form&quot;&gt;
-  &lt;div class=&quot;form-group&quot;&gt;
-    &lt;p&gt;
-      Every property beginning with &quot;textField&quot; will be exposed to the TextField view.
-    &lt;/p&gt;
-    \{{bs-datetimepicker
-      date=model.date1
-      textFieldName=&quot;model.date1&quot;
-      textFieldPlaceholder=&quot;Date&quot;
-      textFieldReadOnly=true
-    }}
-  &lt;/div&gt;
-&lt;/form&gt;</pre>
-      </div>
-    </div>
-
-
-
-
-
-
-
-    <div id="example6">
-      <a name="example6"></a>
       <h3>Template block</h3>
 
       <div>
         <form class="form" role="form">
           <div class="form-group">
+            <label>With template</label>
             {{#bs-datetimepicker date=model.date2}}
-              <label>With template</label>
               {{input class="form-control" name="Date" placeholder="Date"}}
             {{/bs-datetimepicker}}
           </div>
@@ -209,8 +173,8 @@
         <p>
           <pre>&lt;form class=&quot;form&quot; role=&quot;form&quot;&gt;
   &lt;div class=&quot;form-group&quot;&gt;
+    &lt;label&gt;With template&lt;/label&gt;
     \{{#bs-datetimepicker date=model.date2}}
-      &lt;label&gt;With template&lt;/label&gt;
       \{{input disabled=disabled class=&quot;form-control&quot; name=&quot;Date&quot; placeholder=&quot;Date&quot;}}
     \{{/bs-datetimepicker}}
   &lt;/div&gt;
@@ -222,8 +186,8 @@
 
 
 
-    <div id="example7">
-      <a name="example7"></a>
+    <div id="example6">
+      <a name="example6"></a>
       <h3>No Icon (input field only)</h3>
       <div>
         <p class="noicon">
