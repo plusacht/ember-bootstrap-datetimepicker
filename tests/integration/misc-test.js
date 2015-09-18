@@ -61,13 +61,13 @@ test("test yield", function(assert) {
 test("test the useCurrent option", function(assert) {
   assert.expect(2);
 
-  var handleDateCnt = 0;
+  let handleDateCnt = 0;
   this.on('handleDate', val => {
-    var cnt = ++handleDateCnt;
-    if(cnt === 1) {
+    ++handleDateCnt;
+    if(handleDateCnt === 1) {
       assert.ok(val);
     }
-    else if(cnt === 2) {
+    else if(handleDateCnt === 2) {
       assert.equal(val, undefined);
     }
   });
