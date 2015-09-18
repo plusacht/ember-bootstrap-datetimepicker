@@ -54,18 +54,23 @@ test("test yield", function(assert) {
     )
   );
 
-  // initial render
-  //this.$();
-
   assert.equal($('label.yieldholder').text(), "yield");
-
 });
 
 
 test("test the useCurrent option", function(assert) {
   assert.expect(2);
-  var date;
-  this.on('handleDate', val => { assert.ok(val); });
+
+  var handleDateCnt = 0;
+  this.on('handleDate', val => {
+    var cnt = ++handleDateCnt;
+    if(cnt === 1) {
+      assert.ok(val);
+    }
+    else if(cnt === 2) {
+      assert.equal(val, undefined);
+    }
+  });
   this.render(hbs`{{bs-datetimepicker useCurrent=true showClear=true updateDate='handleDate'}}`);
 
   andThen(function() {
@@ -73,15 +78,6 @@ test("test the useCurrent option", function(assert) {
   });
 
   andThen(function() {
-    assert.notEqual(date, undefined);
-  });
-
-  andThen(function() {
     click($("a[data-action='clear']"));
   });
-
-  andThen(function() {
-    assert.equal(date, undefined);
-  });
 });
-
