@@ -45,4 +45,5 @@ script:
   - ember try $EMBER_TRY_SCENARIO test
 
 after_success:
+  - rm -rf travis-phantomjs
   - npm run semantic-release
