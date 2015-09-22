@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {on,computed} = Ember;
+const {on,computed,run} = Ember;
 const computedProps = Ember.A(['minDate', 'maxDate', 'disabledDates', 'enabledDates', 'dateIcon']);
 
 var bsDateTimePickerComponent = Ember.Component.extend({
@@ -29,8 +29,8 @@ var bsDateTimePickerComponent = Ember.Component.extend({
 
     this.set('bsDateTimePicker', bsDateTimePickerFn);
 
-    bsDateTimePicker.on('dp.change', function(ev) {
-      Ember.run( function(){
+    bsDateTimePicker.on('dp.change', ev => {
+      run(() => {
         if(this.attrs.updateDate) {
           if (Ember.isNone(ev.date) || ev.date === false) {
             this.sendAction('updateDate', undefined);
@@ -45,8 +45,8 @@ var bsDateTimePickerComponent = Ember.Component.extend({
         else {
           //warn
         }
-      }.bind(this));
-    }.bind(this));
+      });
+    });
 
     this._updateDateTimePicker();
 
