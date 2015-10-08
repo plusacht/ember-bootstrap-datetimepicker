@@ -89,3 +89,12 @@ test("test the showClear option", function(assert) {
     assert.equal(date, undefined, 'should be undefined after clear the date');
   });
 });
+
+test("test that non-computed properties are passed to the bootstrap-datetimepicker", function(assert) {
+  assert.expect(1);
+
+  this.set('localeName', 'en-IE');
+  this.render(hbs`{{bs-datetimepicker locale=localeName}}`);
+
+  assert.equal(this.$().length, 1);
+});
