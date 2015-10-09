@@ -1,7 +1,7 @@
 {{#if hasBlock}}
   {{yield}}
 {{else}}
-  {{input type="text" class="form-control" disabled=disabled name=textFieldName}}
+  {{input type="text" class="form-control" disabled=disabled name=textFieldName readonly=readonly}}
 {{/if}}
 {{#unless noIcon}}
 <span class="input-group-addon">
