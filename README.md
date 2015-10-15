@@ -94,6 +94,11 @@ Type: `Array Date`
 
 When you change this variable the component trigger an update to the enabledDates on the jQuery plugin.
 
+### forceDateOutput ###
+Type: `Boolean`
+
+Forces the parameter to `updateDate` to be a native javascript Date instead of a moment.js Date.
+
 ## Usage ##
 
 ### Min / Maxdate example ###
