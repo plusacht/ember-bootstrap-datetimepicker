@@ -30,20 +30,18 @@ var bsDateTimePickerComponent = Ember.Component.extend({
     this.set('bsDateTimePicker', bsDateTimePickerFn);
 
     bsDateTimePicker.on('dp.change', ev => {
+      let date = this.getAttr('date') || 0;
       run(() => {
         if(this.attrs.updateDate) {
           if (Ember.isNone(ev.date) || ev.date === false) {
             this.sendAction('updateDate', undefined);
-          } else if (!ev.date.isSame(this.getAttr('date'))) {
+          } else if (!ev.date.isSame(date)) {
             if (this.attrs.forceDateOutput) {
               this.sendAction('updateDate', ev.date.toDate());
             } else {
               this.sendAction('updateDate', ev.date);
             }
           }
-        }
-        else {
-          //warn
         }
       });
     });
