@@ -52,26 +52,22 @@ test("test yield", function(assert) {
   assert.equal($('label.yieldholder').text(), 'yield');
 });
 
-// this should be fixed soon, just commeted out because we want
-//to ship a release
-// test("test the useCurrent option", function(assert) {
-//   assert.expect(1);
-//   let handledDates = 0;
-//   Ember.Test.registerWaiter(() => {
-//     return handledDates > 0;
-//   });
-//
-//   this.render(hbs`{{bs-datetimepicker useCurrent=true updateDate='handleDate'}}`);
-//     this.on('handleDate', val => {
-//       assert.ok(val);
-//       handledDates++;
-//     });
-//     click($(".input-group-addon"));
-// });
+test("test the useCurrent option default value is true", function(assert) {
+  assert.expect(1);
+
+  this.on('handleDate', val => {
+    assert.ok(val);
+  });
+
+
+  this.render(hbs`{{bs-datetimepicker updateDate='handleDate'}}`);
+  click($(".input-group-addon"));
+});
+
 
 test("test the showClear option", function(assert) {
   assert.expect(1);
-  var date;
+  var date = false;
   this.on('handleDate', val => {
     date = val;
   });
