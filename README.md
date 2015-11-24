@@ -38,7 +38,7 @@ After:
 ```
 
 ### Brocfile.js ###
-The twitter bootstrap resources will not be imported to your resources by default. If you want the add-on to add it you have to specify it in the `ember-cli-build.js`
+The twitter bootstrap resources will not be imported to your resources by default. If you want the add-on to add it you have to specify it in the `ember-cli-build.js`. (This options will be deprecated)
 
 ```javascript
 var app = new EmberApp(defaults, {
