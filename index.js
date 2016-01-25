@@ -6,9 +6,10 @@ var path = require('path');
 module.exports = {
   name: 'ember-bootstrap-datetimepicker',
 
-  included: function(app) {
-    this._super.included(app);
+  included: function(target) {
+    this._super.included.apply(this, arguments);
 
+    var app           = target.app || target;
     var bowerDir      = app.bowerDirectory;
     var bootstrapPath = path.join(bowerDir,'/bootstrap/dist/');
     var options       = app.options['ember-bootstrap-datetimepicker'] || {};
