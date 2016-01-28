@@ -99,6 +99,11 @@ Type: `Boolean`
 
 Forces the parameter to `updateDate` to be a native javascript Date instead of a moment.js Date.
 
+### placeholder ###
+Type: `String`
+
+Placeholder support when input field is blank
+
 ## Usage ##
 
 ### Min / Maxdate example ###

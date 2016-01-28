@@ -1,7 +1,7 @@
 import Ember from 'ember';
 
 const {on,computed,run} = Ember;
-const computedProps = Ember.A(['minDate', 'maxDate', 'disabledDates', 'enabledDates', 'dateIcon']);
+const computedProps = Ember.A(['minDate', 'maxDate', 'disabledDates', 'enabledDates', 'dateIcon', 'placeholder']);
 
 var bsDateTimePickerComponent = Ember.Component.extend({
   concatenatedProperties: ['textFieldClassNames'],
@@ -10,6 +10,7 @@ var bsDateTimePickerComponent = Ember.Component.extend({
   textFieldClassNames: ['form-control'],
   bsDateTimePicker: null,
   dateIcon: 'glyphicon glyphicon-calendar',
+  placeholder: '',
 
   inputGroupClass: computed('attrs.noIcon', function() {
     if (!this.getAttr('noIcon')) {
