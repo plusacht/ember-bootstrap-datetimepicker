@@ -98,3 +98,11 @@ test("test that non-computed properties are passed to the bootstrap-datetimepick
 
   assert.equal(this.$().length, 1);
 });
+
+test("test placeholder support", function(assert) {
+  assert.expect(1);
+
+  this.render(hbs`{{bs-datetimepicker placeholder='test-placeholder'}}`);
+
+  assert.equal(this.$('input').attr('placeholder'), 'test-placeholder');
+});
