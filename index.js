@@ -2,6 +2,8 @@
 'use strict';
 
 var path = require('path');
+var Funnel = require('broccoli-funnel');
+var mergeTrees = require('broccoli-merge-trees');
 
 module.exports = {
   name: 'ember-bootstrap-datetimepicker',
@@ -10,29 +12,28 @@ module.exports = {
     this._super.included(app);
 
     var bowerDir      = app.bowerDirectory;
-    var bootstrapPath = path.join(bowerDir,'/bootstrap/dist/');
     var options       = app.options['ember-bootstrap-datetimepicker'] || {};
 
     // Import css theme from bootstrap
     if (options.importBootstrapTheme) {
-      app.import(path.join(bootstrapPath, 'css/bootstrap-theme.css'));
+      app.import('vendor/bootstrap/css/bootstrap-theme.css');
     }
 
     // Import css and glyphicons from bootstrap
     if (options.importBootstrapCSS) {
-      app.import(path.join(bootstrapPath, 'css/bootstrap.css'));
-      app.import(path.join(bootstrapPath, 'css/bootstrap.css.map'), { destDir: 'assets' });
+      app.import('vendor/bootstrap/css/bootstrap.css');
+      app.import('vendor/bootstrap/css/bootstrap.css.map', { destDir: 'assets' });
 
       // Import glyphicons
-      app.import(path.join(bootstrapPath, 'fonts/glyphicons-halflings-regular.eot'), { destDir: '/fonts' });
-      app.import(path.join(bootstrapPath, 'fonts/glyphicons-halflings-regular.svg'), { destDir: '/fonts' });
-      app.import(path.join(bootstrapPath, 'fonts/glyphicons-halflings-regular.ttf'), { destDir: '/fonts' });
-      app.import(path.join(bootstrapPath, 'fonts/glyphicons-halflings-regular.woff'), { destDir: '/fonts' });
-      app.import(path.join(bootstrapPath, 'fonts/glyphicons-halflings-regular.woff2'), { destDir: '/fonts'});
+      app.import('vendor/bootstrap/fonts/glyphicons-halflings-regular.eot', { destDir: '/fonts' });
+      app.import('vendor/bootstrap/fonts/glyphicons-halflings-regular.svg', { destDir: '/fonts' });
+      app.import('vendor/bootstrap/fonts/glyphicons-halflings-regular.ttf', { destDir: '/fonts' });
+      app.import('vendor/bootstrap/fonts/glyphicons-halflings-regular.woff', { destDir: '/fonts' });
+      app.import('vendor/bootstrap/fonts/glyphicons-halflings-regular.woff2', { destDir: '/fonts'});
     }
 
     // Import css from bootstrap-datetimepicker
-    app.import(path.join(bowerDir, '/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css'));
+    app.import('vendor/eonasdan-bootstrap-datetimepicker/build/css/bootstrap-datetimepicker.css');
 
     if(options.importFontAwesome) {
       app.import(bowerDir + '/font-awesome/css/font-awesome.min.css', { destDir: '/fonts'});
@@ -45,10 +46,32 @@ module.exports = {
 
     // Import css from bootstrap
     if (options.importBootstrapJS) {
-      app.import(path.join(bootstrapPath, 'js/bootstrap.js'));
+      app.import('vendor/bootstrap/js/bootstrap.js');
     }
 
     // Import js from bootstrap-datetimepicker
-    app.import(path.join(bowerDir, '/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js'));
+    app.import('vendor/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js');
+  },
+
+  treeForVendor: function(vendorTree) {
+    var trees = [];
+    var bootstrapPath = require.resolve('bootstrap')
+          .replace(path.join('js', 'npm.js'), '');
+    var datetimepickerPath = require.resolve('eonasdan-bootstrap-datetimepicker')
+          .replace(path.join('src', 'js', 'bootstrap-datetimepicker.js'), '');
+
+    if (vendorTree) {
+      trees.push(vendorTree);
+    }
+
+    trees.push(new Funnel(bootstrapPath, {
+      destDir: 'bootstrap'
+    }));
+
+    trees.push(new Funnel(datetimepickerPath, {
+      destDir: 'eonasdan-bootstrap-datetimepicker'
+    }));
+
+    return mergeTrees(trees);
   }
 };
