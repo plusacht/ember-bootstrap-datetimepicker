@@ -12,9 +12,6 @@
     "jquery": "~1.11.1",
     "loader.js": "ember-cli/loader.js#3.2.0",
     "qunit": "~1.17.1",
-    "bootstrap": "~3.3.2",
-    "moment": "~2.10.6",
-    "eonasdan-bootstrap-datetimepicker": "~4.15.35",
     "font-awesome": "~4.3.0"
   },
   "ignore": [
