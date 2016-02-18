@@ -106,3 +106,15 @@ test("test placeholder support", function(assert) {
 
   assert.equal(this.$('input').attr('placeholder'), 'test-placeholder');
 });
+
+test("test the inline option", function(assert) {
+  assert.expect(2);
+
+  assert.equal($(".bootstrap-datetimepicker-widget").length, 0, "no date picker before render");
+
+  this.render(hbs`{{bs-datetimepicker inline=true}}`);
+
+  andThen(() => {
+    assert.equal($(".bootstrap-datetimepicker-widget").css("display"), "block", "date picker is displayed after first render");
+  });
+});
