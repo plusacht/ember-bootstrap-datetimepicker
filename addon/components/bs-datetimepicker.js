@@ -30,6 +30,20 @@ var bsDateTimePickerComponent = Ember.Component.extend({
 
     this.set('bsDateTimePicker', bsDateTimePickerFn);
 
+    run.scheduleOnce('afterRender', this, this._setupChangeEvent, bsDateTimePicker);
+
+    this._updateDateTimePicker();
+
+    if (this.attrs.open) {
+      this.get('bsDateTimePicker').show();
+    }
+  }),
+
+  didReceiveAttrs() {
+    this._updateDateTimePicker();
+  },
+  
+  _setupChangeEvent(bsDateTimePicker) {
     bsDateTimePicker.on('dp.change', ev => {
       run(() => {
         if(this.attrs.updateDate) {
@@ -48,16 +62,6 @@ var bsDateTimePickerComponent = Ember.Component.extend({
         }
       });
     });
-
-    this._updateDateTimePicker();
-
-    if (this.attrs.open) {
-      this.get('bsDateTimePicker').show();
-    }
-  }),
-
-  didReceiveAttrs() {
-    this._updateDateTimePicker();
   },
 
   _updateDateTimePicker() {
