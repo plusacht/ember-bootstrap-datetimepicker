@@ -1,6 +1,6 @@
 import Ember from 'ember';
 
-const {on,computed,run} = Ember;
+const { computed, run } = Ember;
 const computedProps = Ember.A(['minDate', 'maxDate', 'disabledDates', 'enabledDates', 'dateIcon', 'placeholder']);
 
 var bsDateTimePickerComponent = Ember.Component.extend({
@@ -18,31 +18,39 @@ var bsDateTimePickerComponent = Ember.Component.extend({
      }
   }),
 
-  _initDatepicker: on('didInsertElement', function() {
+  didInsertElement() {
+    this._super(...arguments);
+
     var target;
     if (this.getAttr('noIcon')) {
       target = this.$('.' + this.get('textFieldClassNames').join('.'));
     } else {
       target = this.$();
     }
+
     var bsDateTimePicker = target.datetimepicker(this._buildConfig());
-    var bsDateTimePickerFn = bsDateTimePicker.data('DateTimePicker');
-
-    this.set('bsDateTimePicker', bsDateTimePickerFn);
-
-    run.scheduleOnce('afterRender', this, this._setupChangeEvent, bsDateTimePicker);
+    this.bsDateTimePicker = bsDateTimePicker.data('DateTimePicker');
+    this.scheduledUpdate = run.scheduleOnce('afterRender', this, this._setupChangeEvent, bsDateTimePicker);
 
     this._updateDateTimePicker();
 
     if (this.attrs.open) {
-      this.get('bsDateTimePicker').show();
+      this.bsDateTimePicker.show();
     }
-  }),
+  },
+
+  willDestroyElement() {
+    this._super(...arguments);
+
+    run.cancel(this.scheduledUpdate);
+    this.bsDateTimePicker.destroy();
+  },
 
   didReceiveAttrs() {
+    this._super(...arguments);
     this._updateDateTimePicker();
   },
-  
+
   _setupChangeEvent(bsDateTimePicker) {
     bsDateTimePicker.on('dp.change', ev => {
       run(() => {
@@ -57,16 +65,12 @@ var bsDateTimePickerComponent = Ember.Component.extend({
             }
           }
         }
-        else {
-          //warn
-        }
       });
     });
   },
 
   _updateDateTimePicker() {
-
-    var dateTimePicker = this.get('bsDateTimePicker');
+    var dateTimePicker = this.bsDateTimePicker;
     if(dateTimePicker) {
       if (this.getAttr('disabled')) {
         dateTimePicker.disable();
@@ -105,11 +109,6 @@ var bsDateTimePickerComponent = Ember.Component.extend({
       }
     }
   },
-
-  _destroyDatepicker: on('willDestroyElement', function() {
-    this.get('bsDateTimePicker').destroy();
-  }),
-
 
   _buildConfig() {
     var datetimepickerDefaultConfig = Ember.$.fn.datetimepicker.defaults;
