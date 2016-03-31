@@ -59,5 +59,6 @@
     "configPath": "tests/dummy/config",
     "defaultBlueprint": "ember-bootstrap-datetimepicker",
     "demoURL": "http://plusacht.github.io/ember-bootstrap-datetimepicker/"
-  }
+  },
+  "version": "1.0.3"
 }
