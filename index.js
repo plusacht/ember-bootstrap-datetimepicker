@@ -56,8 +56,6 @@ module.exports = {
 
   treeForVendor: function(vendorTree) {
     var trees = [];
-    var bootstrapPath = require.resolve('bootstrap')
-          .replace(path.join('js', 'npm.js'), '');
     var datetimepickerPath = require.resolve('eonasdan-bootstrap-datetimepicker')
           .replace(path.join('src', 'js', 'bootstrap-datetimepicker.js'), '');
 
@@ -65,9 +63,13 @@ module.exports = {
       trees.push(vendorTree);
     }
 
-    trees.push(new Funnel(bootstrapPath, {
-      destDir: 'bootstrap'
-    }));
+    try {
+      var bootstrapPath = require.resolve('bootstrap')
+            .replace(path.join('js', 'npm.js'), '');
+      trees.push(new Funnel(bootstrapPath, {
+        destDir: 'bootstrap'
+      }));
+    } catch(err) {}
 
     trees.push(new Funnel(datetimepickerPath, {
       destDir: 'eonasdan-bootstrap-datetimepicker'
