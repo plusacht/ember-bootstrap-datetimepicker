@@ -53,7 +53,7 @@ var bsDateTimePickerComponent = Ember.Component.extend({
 
   _setupChangeEvent(bsDateTimePicker) {
     bsDateTimePicker.on('dp.change', ev => {
-      run(() => {
+      run.schedule('actions', () => {
         if(this.attrs.updateDate) {
           if (Ember.isNone(ev.date) || ev.date === false) {
             this.sendAction('updateDate', undefined);
