@@ -8,7 +8,7 @@
     "start": "ember server",
     "build": "ember build",
     "test": "ember test",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release pre "
   },
   "repository": {
     "type": "git",
@@ -60,5 +60,6 @@
     "defaultBlueprint": "ember-bootstrap-datetimepicker",
     "demoURL": "http://plusacht.github.io/ember-bootstrap-datetimepicker/"
   },
-  "version": "1.0.3"
+
+  "version": "1.0.4"
 }
