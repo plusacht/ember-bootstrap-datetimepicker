@@ -43,7 +43,9 @@ var bsDateTimePickerComponent = Ember.Component.extend({
     this._super(...arguments);
 
     run.cancel(this.scheduledUpdate);
-    this.bsDateTimePicker.destroy();
+    if(this.bsDateTimePicker) {
+      this.bsDateTimePicker.destroy();
+    }
   },
 
   didReceiveAttrs() {
