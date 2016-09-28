@@ -117,7 +117,7 @@ var bsDateTimePickerComponent = Ember.Component.extend({
     var configKey;
     for (var i = 0; i < isDatetimepickerConfigKeys.length; i++) {
       configKey = isDatetimepickerConfigKeys[i];
-      if (!computedProps.contains(configKey)) {
+      if (!computedProps.includes(configKey)) {
         config[configKey] = this.getWithDefault(configKey, datetimepickerDefaultConfig[configKey]);
       }
     }
