@@ -21,12 +21,7 @@ var bsDateTimePickerComponent = Ember.Component.extend({
   didInsertElement() {
     this._super(...arguments);
 
-    var target;
-    if (this.getAttr('noIcon')) {
-      target = this.$('.' + this.get('textFieldClassNames').join('.'));
-    } else {
-      target = this.$();
-    }
+    var target = this.$('.' + this.get('textFieldClassNames').join('.'));
 
     var bsDateTimePicker = target.datetimepicker(this._buildConfig());
     this.bsDateTimePicker = bsDateTimePicker.data('DateTimePicker');
