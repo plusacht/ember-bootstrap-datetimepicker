@@ -12,17 +12,17 @@ var bsDateTimePickerComponent = Ember.Component.extend({
   dateIcon: 'glyphicon glyphicon-calendar',
   placeholder: '',
 
-  inputGroupClass: computed('attrs.noIcon', function() {
-    if (!this.getAttr('noIcon')) {
-       return 'input-group';
-     }
+  inputGroupClass: computed('attrs.{noIcon,inline}', function() {
+    if (!this.getAttr('noIcon') && !this.getAttr('inline')) {
+      return 'input-group';
+    }
   }),
 
   didInsertElement() {
     this._super(...arguments);
 
     var target;
-    if (this.getAttr('noIcon')) {
+    if (this.getAttr('noIcon') && !this.getAttr('inline')) {
       target = this.$('.' + this.get('textFieldClassNames').join('.'));
     } else {
       target = this.$();
@@ -54,7 +54,7 @@ var bsDateTimePickerComponent = Ember.Component.extend({
   _setupChangeEvent(bsDateTimePicker) {
     bsDateTimePicker.on('dp.change', ev => {
       run(() => {
-        if(this.attrs.updateDate) {
+        if (this.attrs.updateDate) {
           if (Ember.isNone(ev.date) || ev.date === false) {
             this.sendAction('updateDate', undefined);
           } else if (!ev.date.isSame(this.getAttr('date'))) {
@@ -71,7 +71,7 @@ var bsDateTimePickerComponent = Ember.Component.extend({
 
   _updateDateTimePicker() {
     var dateTimePicker = this.bsDateTimePicker;
-    if(dateTimePicker) {
+    if (dateTimePicker) {
       if (this.getAttr('disabled')) {
         dateTimePicker.disable();
       } else {
