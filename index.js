@@ -51,7 +51,9 @@ module.exports = {
     }
 
     // Import js from bootstrap-datetimepicker
-    app.import('vendor/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js');
+    if (typeof FastBoot === 'undefined') {
+      app.import('vendor/eonasdan-bootstrap-datetimepicker/src/js/bootstrap-datetimepicker.js');
+    }
   },
 
   treeForVendor: function(vendorTree) {
