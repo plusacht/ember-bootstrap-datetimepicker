@@ -1,9 +1,11 @@
 import Ember from 'ember';
+import DynamicAttributeBindings from '../-private/dynamic-attribute-bindings';
 
 const { computed, run } = Ember;
 const computedProps = Ember.A(['minDate', 'maxDate', 'disabledDates', 'enabledDates', 'dateIcon', 'placeholder']);
 
-var bsDateTimePickerComponent = Ember.Component.extend({
+var bsDateTimePickerComponent = Ember.Component.extend(DynamicAttributeBindings, {
+  attributeBindings: [],
   concatenatedProperties: ['textFieldClassNames'],
   classNames: ['date'],
   classNameBindings: ['inputGroupClass'],
