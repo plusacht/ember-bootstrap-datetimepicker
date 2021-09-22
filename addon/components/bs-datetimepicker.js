@@ -32,7 +32,7 @@ var bsDateTimePickerComponent = Ember.Component.extend(DynamicAttributeBindings,
 
     var bsDateTimePicker = target.datetimepicker(this._buildConfig());
     this.bsDateTimePicker = bsDateTimePicker.data('DateTimePicker');
-    this.scheduledUpdate = run.scheduleOnce('afterRender', this, this._setupChangeEvent, bsDateTimePicker);
+    this.scheduledUpdate = run.scheduleOnce('afterRender', this, this._setupEvents, bsDateTimePicker);
 
     this._updateDateTimePicker();
 
@@ -53,7 +53,7 @@ var bsDateTimePickerComponent = Ember.Component.extend(DynamicAttributeBindings,
     this._updateDateTimePicker();
   },
 
-  _setupChangeEvent(bsDateTimePicker) {
+  _setupEvents(bsDateTimePicker) {
     bsDateTimePicker.on('dp.change', ev => {
       run(() => {
         if(this.attrs.updateDate) {
@@ -69,6 +69,22 @@ var bsDateTimePickerComponent = Ember.Component.extend(DynamicAttributeBindings,
         }
       });
     });
+
+    bsDateTimePicker.on('dp.show', ev => {
+      run(() => {
+        if(this.attrs.onShow) {
+          this.sendAction('onShow')
+        }
+      });
+    })
+
+    bsDateTimePicker.on('dp.hide', ev => {
+      run(() => {
+        if(this.attrs.onHide) {
+          this.sendAction('onHide')
+        }
+      });
+    })
   },
 
   _updateDateTimePicker() {
